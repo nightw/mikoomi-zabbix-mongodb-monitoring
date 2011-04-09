@@ -511,7 +511,7 @@
             <application>Database Connections</application>
           </applications>
         </item>
-        <item type="2" key="cursros_clientCursors_size" value_type="3">
+        <item type="2" key="cursors_clientCursors_size" value_type="3">
           <description>Cursors: Client Cursor Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -544,7 +544,7 @@
             <application>Cursors</application>
           </applications>
         </item>
-        <item type="2" key="cursros_timedOut" value_type="3">
+        <item type="2" key="cursors_timedOut" value_type="3">
           <description>Cursors: Cursor Time Outs</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -577,7 +577,7 @@
             <application>Cursors</application>
           </applications>
         </item>
-        <item type="2" key="cursros_totalOpen" value_type="3">
+        <item type="2" key="cursors_totalOpen" value_type="3">
           <description>Cursors: Open Curors</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>

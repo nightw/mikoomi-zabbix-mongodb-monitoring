@@ -233,14 +233,14 @@ write_to_data_file("$zabbix_name backgroundFlushing_average_ms $backgroundFlushi
 $backgroundFlushing_last_ms = $server_status['retval']['backgroundFlushing']['last_ms'] ;
 write_to_data_file("$zabbix_name backgroundFlushing_last_ms $backgroundFlushing_last_ms") ;
 
-$cursros_totalOpen = $server_status['retval']['cursros']['totalOpen'] ;
-write_to_data_file("$zabbix_name cursros_totalOpen $cursros_totalOpen") ;
+$cursors_totalOpen = $server_status['retval']['cursors']['totalOpen'] ;
+write_to_data_file("$zabbix_name cursors_totalOpen $cursors_totalOpen") ;
 
-$cursros_clientCursors_size = $server_status['retval']['cursros']['clientCursors_size'] ;
-write_to_data_file("$zabbix_name cursros_clientCursors_size $cursros_clientCursors_size") ;
+$cursors_clientCursors_size = $server_status['retval']['cursors']['clientCursors_size'] ;
+write_to_data_file("$zabbix_name cursors_clientCursors_size $cursors_clientCursors_size") ;
 
-$cursros_timedOut = $server_status['retval']['cursros']['timedOut'] ;
-write_to_data_file("$zabbix_name cursros_timedOut $cursros_timedOut") ;
+$cursors_timedOut = $server_status['retval']['cursors']['timedOut'] ;
+write_to_data_file("$zabbix_name cursors_timedOut $cursors_timedOut") ;
 
 $opcounters_insert = $server_status['retval']['opcounters']['insert'] ;
 write_to_data_file("$zabbix_name opcounters_insert $opcounters_insert") ;
