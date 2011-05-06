@@ -29,7 +29,7 @@ error_reporting(E_PARSE) ;
 
 $options = getopt("Dh:p:z:u:x:") ;
 $command_name = basename($argv[0]) ;
-$command_version = "0.3" ;
+$command_version = "0.4" ;
 
 // Get data collection start time (we will use this to compute the total data collection time)
 $start_time = time() ;
@@ -78,7 +78,6 @@ if ($debug_mode) {
     write_to_log_file("$command_name version $command_version\n") ;
 }
 //-------------------------------------------------------------------------//
-
 
 //-------------------------------------------------------------------------//
 function write_to_log_file($output_line)
@@ -163,7 +162,7 @@ if (!isset($server_status['retval']['ok'])) {
     write_to_log_file("$command_name:Error in executing $command. Probably connection attempted to non-master node/instance") ;
     exit ;
 }
-    
+
 $mongo_version = $server_status['retval']['version'] ;
 write_to_data_file("$zabbix_name mongodb_version $mongo_version") ;
 
@@ -275,6 +274,41 @@ write_to_data_file("$zabbix_name asserts_user $asserts_user") ;
 $asserts_rollovers = $server_status['retval']['asserts']['rollovers'] ;
 write_to_data_file("$zabbix_name asserts_rollovers $asserts_rollovers") ;
 
+$network_inbound_traffic_mb = ($server_status['retval']['network']['bytesIn'])/(1024*1024) ;
+write_to_data_file("$zabbix_name network_inbound_traffic_mb $network_inbound_traffic_mb") ;
+
+$network_outbound_traffic_mb = ($server_status['retval']['network']['bytesOut'])/(1024*1024) ;
+write_to_data_file("$zabbix_name network_outbound_traffic_mb $network_outbound_traffic_mb") ;
+
+$network_requests = $server_status['retval']['network']['numRequests'] ;
+write_to_data_file("$zabbix_name network_requests $network_requests") ;
+
+$write_backs_queued = $server_status['retval']['writeBacksQueued'] ? 1:0 ;
+write_to_data_file("$zabbix_name write_backs_queued $write_backs_queued") ;
+
+$logging_commits = $server_status['retval']['dur']['commits'] ;
+write_to_data_file("$zabbix_name logging_commits $logging_commits") ;
+
+$logging_journal_writes_mb = $server_status['retval']['dur']['journaledMB'] ;
+write_to_data_file("$zabbix_name logging_journal_writes_mb $logging_journal_writes_mb") ;
+
+$logging_datafile_writes_mb = $server_status['retval']['dur']['writeToDataFilesMB'] ;
+write_to_data_file("$zabbix_name logging_datafile_writes_mb $logging_datafile_writes_mb") ;
+
+$logging_commits_in_writelock = $server_status['retval']['dur']['commitsInWriteLock'] ;
+write_to_data_file("$zabbix_name logging_commits_in_writelock $logging_commits_in_writelock") ;
+
+$logging_early_commits = $server_status['retval']['dur']['earlyCommits'] ;
+write_to_data_file("$zabbix_name logging_early_commits $logging_early_commits") ;
+
+$logging_log_buffer_prep_time_ms = $server_status['retval']['dur']['timeMs']['prepLogBuffer'] ;
+write_to_data_file("$zabbix_name logging_log_buffer_prep_time_ms $logging_log_buffer_prep_time_ms") ;
+
+$logging_journal_write_time_ms = $server_status['retval']['dur']['timeMs']['writeToJournal'] ;
+write_to_data_file("$zabbix_name logging_journal_write_time_ms $logging_journal_write_time_ms") ;
+
+$logging_datafile_write_time_ms = $server_status['retval']['dur']['timeMs']['writeToDataFiles'] ;
+write_to_data_file("$zabbix_name logging_datafile_write_time_ms $logging_datafile_write_time_ms") ;
 
 //-----------------------------
 // Get DB list and cumulative DB info
@@ -285,7 +319,7 @@ $db_count = count($db_list) ;
 write_to_data_file("$zabbix_name db_count $db_count") ;
 
 $totalSize = round(($db_list['totalSize'])/(1024*1024), 2) ;
-write_to_data_file("$zabbix_name totalSize $totalSize") ;
+write_to_data_file("$zabbix_name totalSize_mb $totalSize") ;
 
 $sharded_db_count = 0 ;
 $total_collection_count = 0 ;
