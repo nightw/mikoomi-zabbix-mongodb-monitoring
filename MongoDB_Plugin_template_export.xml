@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zabbix_export version="1.0" date="05.05.11" time="23.43">
+<zabbix_export version="1.0" date="19.10.10" time="17.35">
   <hosts>
     <host name="Template_MongoDB">
       <proxy_hostid>0</proxy_hostid>
@@ -1369,40 +1369,7 @@
             <application>Index Effectiveness</application>
           </applications>
         </item>
-        <item type="2" key="is_sharded" value_type="1">
-          <description>Sharding: Is Mongo Server a Cluster Router (mongos process)</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>30</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Sharding</application>
-          </applications>
-        </item>
-        <item type="2" key="isReplicaSet" value_type="1">
+        <item type="2" key="is_replica_set" value_type="1">
           <description>Replication: Is Mongo Server Part of a ReplicatSet</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1435,17 +1402,17 @@
             <application>Replication</application>
           </applications>
         </item>
-        <item type="2" key="logging_commits" value_type="3">
-          <description>Journaling: Commits in last 1 Minute</description>
+        <item type="2" key="is_sharded" value_type="1">
+          <description>Sharding: Is Mongo Server a Cluster Router (mongos process)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
-          <history>90</history>
+          <history>30</history>
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
           <units></units>
           <multiplier>0</multiplier>
-          <delta>2</delta>
+          <delta>0</delta>
           <formula>0</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
@@ -1465,238 +1432,7 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Journaling</application>
-          </applications>
-        </item>
-        <item type="2" key="logging_commits_in_writelock" value_type="3">
-          <description>Journaling: Commits in Writelocks in last 1 Minute</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Journaling</application>
-          </applications>
-        </item>
-        <item type="2" key="logging_datafile_write_time_ms" value_type="3">
-          <description>Journaling: Datafile Write Time (ms) in last 1 Minute</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Journaling</application>
-          </applications>
-        </item>
-        <item type="2" key="logging_datafile_writes_mb" value_type="0">
-          <description>Journaling: Datafile Writes (MB) in last 1 Minute</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Journaling</application>
-          </applications>
-        </item>
-        <item type="2" key="logging_early_commits" value_type="3">
-          <description>Journaling: Early Commits in last 1 Minute</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Journaling</application>
-          </applications>
-        </item>
-        <item type="2" key="logging_journal_write_time_ms" value_type="3">
-          <description>Journaling: Journal Write Time (ms) in last 1 Minute</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Journaling</application>
-          </applications>
-        </item>
-        <item type="2" key="logging_journal_writes_mb" value_type="0">
-          <description>Journaling: Journal Writes (MB) in last 1 Minute</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Journaling</application>
-          </applications>
-        </item>
-        <item type="2" key="logging_log_buffer_prep_time_ms" value_type="3">
-          <description>Journaling: Log Buffer Prep Time (ms) in last 1 Minute</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Journaling</application>
+            <application>Sharding</application>
           </applications>
         </item>
         <item type="2" key="mem_bits" value_type="3">
@@ -1798,7 +1534,7 @@
             <application>Memory</application>
           </applications>
         </item>
-        <item type="10" key="mikoomi-mongodb-plugin.sh[-h {$MONGODB_HOSTNAME} -p {$MONGODB_PORT} -z {$ZABBIX_HOSTNAME}]" value_type="3">
+        <item type="10" key="mikoomi-mongodb-plugin.sh[-h {$SERVER} -p {$PORT} -z {HOSTNAME}]" value_type="3">
           <description>Miscellaneous: Data Collector</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1961,105 +1697,6 @@
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
             <application>Miscellaneous</application>
-          </applications>
-        </item>
-        <item type="2" key="network_inbound_traffic_mb" value_type="0">
-          <description>Network Activity: Network Inbound Traffic (MB)</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Network Activity</application>
-          </applications>
-        </item>
-        <item type="2" key="network_outbound_traffic_mb" value_type="0">
-          <description>Network Activity: Network Outbound Traffic (MB)</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Network Activity</application>
-          </applications>
-        </item>
-        <item type="2" key="network_requests" value_type="3">
-          <description>Network Activity: Network Requests</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>2</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Network Activity</application>
           </applications>
         </item>
         <item type="2" key="opcounters_command" value_type="3">
@@ -2722,7 +2359,7 @@
             <application>Databases and Collections</application>
           </applications>
         </item>
-        <item type="2" key="totalSize_mb" value_type="0">
+        <item type="2" key="totalSize" value_type="0">
           <description>Databases and Collections: Total Size of All Databases (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2788,39 +2425,6 @@
             <application>Miscellaneous</application>
           </applications>
         </item>
-        <item type="2" key="write_backs_queued" value_type="3">
-          <description>Journaling: Writeback Queued up?</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Journaling</application>
-          </applications>
-        </item>
       </items>
       <templates/>
       <graphs>
@@ -2861,68 +2465,6 @@
               <drawtype>2</drawtype>
               <sortorder>2</sortorder>
               <color>0000CC</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>7</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-          </graph_elements>
-        </graph>
-        <graph name="MongoDB Journaling" width="900" height="200">
-          <ymin_type>0</ymin_type>
-          <ymax_type>0</ymax_type>
-          <ymin_item_key></ymin_item_key>
-          <ymax_item_key></ymax_item_key>
-          <show_work_period>0</show_work_period>
-          <show_triggers>1</show_triggers>
-          <graphtype>0</graphtype>
-          <yaxismin>0.0000</yaxismin>
-          <yaxismax>100.0000</yaxismax>
-          <show_legend>0</show_legend>
-          <show_3d>0</show_3d>
-          <percent_left>0.0000</percent_left>
-          <percent_right>0.0000</percent_right>
-          <graph_elements>
-            <graph_element item="Template_MongoDB:logging_commits">
-              <drawtype>2</drawtype>
-              <sortorder>0</sortorder>
-              <color>00DD00</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>7</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_MongoDB:logging_datafile_writes_mb">
-              <drawtype>2</drawtype>
-              <sortorder>1</sortorder>
-              <color>CC0000</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>7</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_MongoDB:logging_datafile_write_time_ms">
-              <drawtype>2</drawtype>
-              <sortorder>2</sortorder>
-              <color>CCCC00</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>7</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_MongoDB:logging_journal_writes_mb">
-              <drawtype>2</drawtype>
-              <sortorder>3</sortorder>
-              <color>0000BB</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>7</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_MongoDB:logging_journal_write_time_ms">
-              <drawtype>2</drawtype>
-              <sortorder>4</sortorder>
-              <color>000000</color>
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
@@ -3087,7 +2629,7 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_MongoDB:totalSize_mb">
+            <graph_element item="Template_MongoDB:totalSize">
               <drawtype>1</drawtype>
               <sortorder>0</sortorder>
               <color>0000EE</color>
@@ -3102,15 +2644,11 @@
       <macros>
         <macro>
           <value>MongoDB_Hostname</value>
-          <name>{$MONGODB_HOSTNAME}</name>
+          <name>{$HOSTNAME}</name>
         </macro>
         <macro>
           <value>MongDB_Server_Port</value>
-          <name>{$MONGODB_PORT}</name>
-        </macro>
-        <macro>
-          <value>Hostname_for_MongoDB_in_Zabbix</value>
-          <name>{$ZABBIX_HOSTNAME}</name>
+          <name>{$PORT}</name>
         </macro>
       </macros>
     </host>
