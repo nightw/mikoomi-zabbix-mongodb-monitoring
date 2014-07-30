@@ -197,19 +197,39 @@ write_to_data_file("$zabbix_name extra_info_heap_usage $extra_info_heap_usage") 
 $extra_info_page_faults = $server_status['extra_info']['page_faults'] ;
 write_to_data_file("$zabbix_name extra_info_page_faults $extra_info_page_faults") ;
 
-$indexCounters_btree_accesses = $server_status['indexCounters']['btree']['accesses'] ;
+if ($server_status['indexCounters']['btree']['accesses'] != null) {
+  $indexCounters_btree_accesses = $server_status['indexCounters']['btree']['accesses'] ;
+} else {
+  $indexCounters_btree_accesses = $server_status['indexCounters']['accesses'] ;
+}
 write_to_data_file("$zabbix_name indexCounters_btree_accesses $indexCounters_btree_accesses") ;
 
-$indexCounters_btree_hits = $server_status['indexCounters']['btree']['hits'] ;
+if ($server_status['indexCounters']['btree']['hits'] != null) {
+  $indexCounters_btree_hits = $server_status['indexCounters']['btree']['hits'] ;
+} else {
+  $indexCounters_btree_hits = $server_status['indexCounters']['hits'] ;
+}
 write_to_data_file("$zabbix_name indexCounters_btree_hits $indexCounters_btree_hits") ;
 
-$indexCounters_btree_misses = $server_status['indexCounters']['btree']['misses'] ;
+if ($server_status['indexCounters']['btree']['misses'] != null) {
+  $indexCounters_btree_misses = $server_status['indexCounters']['btree']['misses'] ;
+} else {
+  $indexCounters_btree_misses = $server_status['indexCounters']['misses'] ;
+}
 write_to_data_file("$zabbix_name indexCounters_btree_misses $indexCounters_btree_misses") ;
 
-$indexCounters_btree_resets = $server_status['indexCounters']['btree']['resets'] ;
+if ($server_status['indexCounters']['btree']['resets'] != null) {
+  $indexCounters_btree_resets = $server_status['indexCounters']['btree']['resets'] ;
+} else {
+  $indexCounters_btree_resets = $server_status['indexCounters']['resets'] ;
+}
 write_to_data_file("$zabbix_name indexCounters_btree_resets $indexCounters_btree_resets") ;
 
-$indexCounters_btree_missRatio = $server_status['indexCounters']['btree']['missRatio'] ;
+if ($server_status['indexCounters']['btree']['missRatio'] != null) {
+  $indexCounters_btree_missRatio = $server_status['indexCounters']['btree']['missRatio'] ;
+} else {
+  $indexCounters_btree_missRatio = $server_status['indexCounters']['missRatio'] ;
+}
 write_to_data_file("$zabbix_name indexCounters_btree_missRatio $indexCounters_btree_missRatio") ;
 
 $backgroundFlushing_flushes = $server_status['backgroundFlushing']['flushes'] ;
