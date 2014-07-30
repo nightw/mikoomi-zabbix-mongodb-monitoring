@@ -152,6 +152,7 @@ The MongoDB plugin monitors the following metrics or items during each cycle:
 * Network Activity: Network Inbound Traffic (MB)
 * Network Activity: Network Outbound Traffic (MB)
 * Network Activity: Network Requests
+* Performance: Is there any writeback operations queued
 * OpCounters: Total Commands in Last 1 Minute
 * OpCounters: Total Delete Ops in Last 1 Minute
 * OpCounters: Total Getmore Ops in Last 1 Minute

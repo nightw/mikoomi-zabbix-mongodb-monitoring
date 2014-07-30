@@ -275,8 +275,12 @@ write_to_data_file("$zabbix_name network_outbound_traffic_mb $network_outbound_t
 $network_requests = $server_status['network']['numRequests'] ;
 write_to_data_file("$zabbix_name network_requests $network_requests") ;
 
-$write_backs_queued = $server_status['writeBacksQueued'] ? 1:0 ;
-write_to_data_file("$zabbix_name write_backs_queued $write_backs_queued") ;
+$write_backs_queued = $server_status['writeBacksQueued'] ;
+if ($write_backs_queued) {
+  write_to_data_file("$zabbix_name write_backs_queued Yes") ;
+} else {
+  write_to_data_file("$zabbix_name write_backs_queued No") ;
+}
 
 $logging_commits = $server_status['dur']['commits'] ;
 write_to_data_file("$zabbix_name logging_commits $logging_commits") ;
@@ -311,7 +315,7 @@ $db_count = count($db_list) ;
 write_to_data_file("$zabbix_name db_count $db_count") ;
 
 $totalSize = round(($db_list['totalSize'])/(1024*1024), 2) ;
-write_to_data_file("$zabbix_name totalSize_mb $totalSize") ;
+write_to_data_file("$zabbix_name totalSize $totalSize") ;
 
 $sharded_db_count = 0 ;
 $total_collection_count = 0 ;
@@ -375,6 +379,7 @@ foreach($db_list['databases'] as $db) {
     $db_info_fileSize .= $db['name'] . '=' . $db_stats['fileSize'] . ' || ';
 }
 
+$db_info = '';
 foreach($db_info_array as $key=>$value) {
    $db_info .= $key . ':' . $value . ' || ' ;
 }
@@ -415,17 +420,17 @@ if ($is_sharded == 'No') {
        write_to_data_file("$zabbix_name replica_set_name ".$rs_status['set']) ;
        write_to_data_file("$zabbix_name replica_set_member_count " . count($rs_status['members']) )  ;
    
+       $repl_set_member_names = '' ;
        foreach ($rs_status['members'] as $repl_set_member) {
            $repl_set_member_names .= 'host#' . $repl_set_member['_id'] . ' = ' . $repl_set_member['name'] . ' || ' ;
        }
        write_to_data_file("$zabbix_name replica_set_hosts " . $repl_set_member_names)  ;
    
-       //$col_name = "oplog.rs" ;
-       //$mongo_collection = $mongo_db_handle->$t ;
-       //echo "aaa\n" ;
-       //$rs_status = $mongo_collection->count() ;
-       //echo "aaa\n" ;
-       //write_to_data_file("$zabbix_name oplog.rs_count " . $rs_status)  ;
+       $local_mongo_db_handle = $mongo_connection->selectDB('local') ;
+       $col_name = 'oplog.rs' ;
+       $mongo_collection = $local_mongo_db_handle->$col_name ;
+       $oplog_rs_count = $mongo_collection->count() ;
+       write_to_data_file("$zabbix_name oplog.rs_count " . $oplog_rs_count)  ;
    
        //$rs_status = $mongo_db_handle->execute("$command") ;
        $repl_member_attention_state_count = 0 ;
