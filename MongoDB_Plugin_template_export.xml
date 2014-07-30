@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zabbix_export version="1.0" date="19.10.10" time="17.35">
+<zabbix_export version="2.0" date="30.07.14" time="12.25">
   <hosts>
     <host name="Template_MongoDB">
       <proxy_hostid>0</proxy_hostid>
@@ -19,9 +19,14 @@
         <group>Templates</group>
         <group>Mikoomi Templates</group>
       </groups>
+      <applications>
+        <application>
+          <name>MongoDB</name>
+        </application>
+      </applications>
       <triggers>
         <trigger>
-          <description>One or more databases have been created</description>
+          <description>MongoDB: One or more databases have been created</description>
           <type>0</type>
           <expression>{Template_MongoDB:db_count.last(0)}&gt;{Template_MongoDB:db_count.last(1)}</expression>
           <url></url>
@@ -30,7 +35,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more databases have been destroyed</description>
+          <description>MongoDB: One or more databases have been destroyed</description>
           <type>0</type>
           <expression>{Template_MongoDB:db_count.last(0)}&lt;{Template_MongoDB:db_count.last(1)}</expression>
           <url></url>
@@ -39,7 +44,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>No Data Received in 5 minutes</description>
+          <description>MongoDB: No Data Received in 5 minutes</description>
           <type>0</type>
           <expression>{Template_MongoDB:mongoDB_plugin_checksum.nodata(300)}=1</expression>
           <url></url>
@@ -48,7 +53,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more replication members need attention</description>
+          <description>MongoDB: One or more replication members need attention</description>
           <type>0</type>
           <expression>{Template_MongoDB:repl_member_attention_state_count.last(0)}&gt;0</expression>
           <url></url>
@@ -57,7 +62,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more members have been removed from the ReplicaSet</description>
+          <description>MongoDB: One or more members have been removed from the ReplicaSet</description>
           <type>0</type>
           <expression>{Template_MongoDB:replica_set_member_count.last(0)}&lt;{Template_MongoDB:replica_set_member_count.last(1)}</expression>
           <url></url>
@@ -66,7 +71,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more members have been added to the ReplicaSet</description>
+          <description>MongoDB: One or more members have been added to the ReplicaSet</description>
           <type>0</type>
           <expression>{Template_MongoDB:replica_set_member_count.last(0)}&gt;{Template_MongoDB:replica_set_member_count.last(1)}</expression>
           <url></url>
@@ -75,7 +80,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more new shard chunks have been created</description>
+          <description>MongoDB: One or more new shard chunks have been created</description>
           <type>0</type>
           <expression>{Template_MongoDB:shard_chunk_count.last(0)}&gt;{Template_MongoDB:shard_chunk_count.last(1)}</expression>
           <url></url>
@@ -84,7 +89,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more shards have been added to the cluster</description>
+          <description>MongoDB: One or more shards have been added to the cluster</description>
           <type>0</type>
           <expression>{Template_MongoDB:shard_count.last(0)}&gt;{Template_MongoDB:shard_count.last(1)}</expression>
           <url></url>
@@ -93,7 +98,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more shards have been removed from the cluster</description>
+          <description>MongoDB: One or more shards have been removed from the cluster</description>
           <type>0</type>
           <expression>{Template_MongoDB:shard_count.last(0)}&lt;{Template_MongoDB:shard_count.last(1)}</expression>
           <url></url>
@@ -102,7 +107,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more new sharded collections have been created</description>
+          <description>MongoDB: One or more new sharded collections have been created</description>
           <type>0</type>
           <expression>{Template_MongoDB:sharded_collections_count.last(0)}&gt;{Template_MongoDB:sharded_collections_count.last(1)}</expression>
           <url></url>
@@ -111,7 +116,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more collections have been dropped</description>
+          <description>MongoDB: One or more collections have been dropped</description>
           <type>0</type>
           <expression>{Template_MongoDB:total_collection_count.last(0)}&lt;{Template_MongoDB:total_collection_count.last(1)}</expression>
           <url></url>
@@ -120,7 +125,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more collections have been added</description>
+          <description>MongoDB: One or more collections have been added</description>
           <type>0</type>
           <expression>{Template_MongoDB:total_collection_count.last(0)}&gt;{Template_MongoDB:total_collection_count.last(1)}</expression>
           <url></url>
@@ -129,7 +134,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more indexes have been dropped</description>
+          <description>MongoDB: One or more indexes have been dropped</description>
           <type>0</type>
           <expression>{Template_MongoDB:total_index_count.last(0)}&lt;{Template_MongoDB:total_index_count.last(1)}</expression>
           <url></url>
@@ -138,7 +143,7 @@
           <comments></comments>
         </trigger>
         <trigger>
-          <description>One or more indexes have been added</description>
+          <description>MongoDB: One or more indexes have been added</description>
           <type>0</type>
           <expression>{Template_MongoDB:total_index_count.last(0)}&gt;{Template_MongoDB:total_index_count.last(1)}</expression>
           <url></url>
@@ -149,7 +154,7 @@
       </triggers>
       <items>
         <item type="2" key="asserts_msg" value_type="3">
-          <description>Asserts: Total Msg Asserts</description>
+          <description>MongoDB: Asserts: Total Msg Asserts</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -178,11 +183,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Asserts</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="asserts_regular" value_type="3">
-          <description>Asserts: Total Regular Asserts</description>
+          <description>MongoDB: Asserts: Total Regular Asserts</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -211,11 +216,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Asserts</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="asserts_rollovers" value_type="3">
-          <description>Asserts: Total Assert Rollovers</description>
+          <description>MongoDB: Asserts: Total Assert Rollovers</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -244,11 +249,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Asserts</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="asserts_user" value_type="3">
-          <description>Asserts: Total User Asserts</description>
+          <description>MongoDB: Asserts: Total User Asserts</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -277,11 +282,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Asserts</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="asserts_warning" value_type="3">
-          <description>Asserts: Total Warning Asserts</description>
+          <description>MongoDB: Asserts: Total Warning Asserts</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -310,11 +315,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Asserts</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="backgroundFlushing_average_ms" value_type="0">
-          <description>Background Flushing: Background Flush Average Time (ms)</description>
+          <description>MongoDB: Background Flushing: Background Flush Average Time (ms)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -343,11 +348,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Background Flushing</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="backgroundFlushing_flushes" value_type="3">
-          <description>Background Flushing: Number of Flushes in Last 1 Minute</description>
+          <description>MongoDB: Background Flushing: Number of Flushes in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -376,11 +381,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Background Flushing</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="backgroundFlushing_last_ms" value_type="0">
-          <description>Background Flushing: Last Background Flush Time (ms)</description>
+          <description>MongoDB: Background Flushing: Last Background Flush Time (ms)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -409,11 +414,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Background Flushing</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="backgroundFlushing_total_ms" value_type="0">
-          <description>Background Flushing: Total Background Flush Time (ms) in Last 1 Minute</description>
+          <description>MongoDB: Background Flushing: Total Background Flush Time (ms) in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -442,11 +447,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Background Flushing</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="connections_available" value_type="3">
-          <description>Database Connections: Connections Available</description>
+          <description>MongoDB: Database Connections: Connections Available</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -475,11 +480,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Database Connections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="connections_current" value_type="3">
-          <description>Database Connections: Current Connections</description>
+          <description>MongoDB: Database Connections: Current Connections</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -508,11 +513,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Database Connections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="cursors_clientCursors_size" value_type="3">
-          <description>Cursors: Client Cursor Size</description>
+          <description>MongoDB: Cursors: Client Cursor Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -541,11 +546,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Cursors</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="cursors_timedOut" value_type="3">
-          <description>Cursors: Cursor Time Outs</description>
+          <description>MongoDB: Cursors: Cursor Time Outs</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -574,11 +579,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Cursors</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="cursors_totalOpen" value_type="3">
-          <description>Cursors: Open Curors</description>
+          <description>MongoDB: Cursors: Open Curors</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -607,11 +612,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Cursors</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="database_info" value_type="4">
-          <description>Databases and Collections: List of All Database Stats</description>
+          <description>MongoDB: Databases and Collections: List of All Database Stats</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -640,11 +645,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_avgObjSize" value_type="4">
-          <description>Databases and Collections: List of Database Average Object Size</description>
+          <description>MongoDB: Databases and Collections: List of Database Average Object Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -673,11 +678,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_collections" value_type="4">
-          <description>Databases and Collections: List of Database Collection Count</description>
+          <description>MongoDB: Databases and Collections: List of Database Collection Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -706,11 +711,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_count" value_type="3">
-          <description>Databases and Collections: Database Count</description>
+          <description>MongoDB: Databases and Collections: Database Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -739,11 +744,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_dataSize" value_type="4">
-          <description>Databases and Collections: List of Database Data Size</description>
+          <description>MongoDB: Databases and Collections: List of Database Data Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -772,11 +777,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_fileSize" value_type="4">
-          <description>Databases and Collections: List of Database File Size</description>
+          <description>MongoDB: Databases and Collections: List of Database File Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -805,11 +810,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_indexes" value_type="4">
-          <description>Databases and Collections: List of Database Index Count</description>
+          <description>MongoDB: Databases and Collections: List of Database Index Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -838,11 +843,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_indexSize" value_type="4">
-          <description>Databases and Collections: List of Database Index Size</description>
+          <description>MongoDB: Databases and Collections: List of Database Index Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -871,11 +876,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_info" value_type="4">
-          <description>Sharding: List of Sharded Databases and Collections</description>
+          <description>MongoDB: Sharding: List of Sharded Databases and Collections</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -904,11 +909,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Sharding</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_numExtents" value_type="4">
-          <description>Databases and Collections: List of Database Extent Count</description>
+          <description>MongoDB: Databases and Collections: List of Database Extent Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -937,11 +942,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_objects" value_type="4">
-          <description>Databases and Collections: List of Database Object Count</description>
+          <description>MongoDB: Databases and Collections: List of Database Object Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -970,11 +975,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="db_storageSize" value_type="4">
-          <description>Databases and Collections: List of Database Storage Size</description>
+          <description>MongoDB: Databases and Collections: List of Database Storage Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -1003,11 +1008,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="extra_info_heap_usage" value_type="0">
-          <description>Memory: Heap Memory Size (MB)</description>
+          <description>MongoDB: Memory: Heap Memory Size (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1036,11 +1041,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Memory</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="extra_info_page_faults" value_type="3">
-          <description>Memory: Page Faults/minute</description>
+          <description>MongoDB: Memory: Page Faults/minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1069,11 +1074,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Memory</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="globalLock_currentQueue_readers" value_type="3">
-          <description>Global Locking: Current Reader Queue Length</description>
+          <description>MongoDB: Global Locking: Current Reader Queue Length</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1102,11 +1107,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Global Locking</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="globalLock_currentQueue_total" value_type="3">
-          <description>Global Locking: Current Total Queue Length</description>
+          <description>MongoDB: Global Locking: Current Total Queue Length</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1135,11 +1140,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Global Locking</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="globalLock_currentQueue_writers" value_type="3">
-          <description>Global Locking: Current Writer Queue Length</description>
+          <description>MongoDB: Global Locking: Current Writer Queue Length</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1168,11 +1173,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Global Locking</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="globalLock_lockTime" value_type="3">
-          <description>Global Locking: Total Lock Time (microseconds) in Last 1 Minute</description>
+          <description>MongoDB: Global Locking: Total Lock Time (microseconds) in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1201,11 +1206,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Global Locking</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="indexCounters_btree_accesses" value_type="3">
-          <description>Index Effectiveness: Total Btree Accesses in Last 1 Minute</description>
+          <description>MongoDB: Index Effectiveness: Total Btree Accesses in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1234,11 +1239,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Index Effectiveness</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="indexCounters_btree_hits" value_type="3">
-          <description>Index Effectiveness: Total Btree Hits in Last 1 Minute</description>
+          <description>MongoDB: Index Effectiveness: Total Btree Hits in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1267,11 +1272,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Index Effectiveness</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="indexCounters_btree_misses" value_type="3">
-          <description>Index Effectiveness: Total Btree Misses in Last 1 Minute</description>
+          <description>MongoDB: Index Effectiveness: Total Btree Misses in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1300,11 +1305,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Index Effectiveness</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="indexCounters_btree_missRatio" value_type="0">
-          <description>Index Effectiveness: Btree Miss Ratio</description>
+          <description>MongoDB: Index Effectiveness: Btree Miss Ratio</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1333,11 +1338,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Index Effectiveness</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="indexCounters_btree_resets" value_type="3">
-          <description>Index Effectiveness: Total Btree Resets</description>
+          <description>MongoDB: Index Effectiveness: Total Btree Resets</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1366,11 +1371,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Index Effectiveness</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="is_replica_set" value_type="1">
-          <description>Replication: Is Mongo Server Part of a ReplicatSet</description>
+          <description>MongoDB: Replication: Is Mongo Server Part of a ReplicatSet</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -1399,11 +1404,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Replication</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="is_sharded" value_type="1">
-          <description>Sharding: Is Mongo Server a Cluster Router (mongos process)</description>
+          <description>MongoDB: Sharding: Is Mongo Server a Cluster Router (mongos process)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -1432,11 +1437,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Sharding</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="mem_bits" value_type="3">
-          <description>Memory: Memory Addressing (32/64 bit)</description>
+          <description>MongoDB: Memory: Memory Addressing (32/64 bit)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1465,11 +1470,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Memory</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="mem_resident" value_type="3">
-          <description>Memory: Resident Memory Size (MB)</description>
+          <description>MongoDB: Memory: Resident Memory Size (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1498,11 +1503,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Memory</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="mem_virtual" value_type="3">
-          <description>Memory: Virtual Memory Size (MB)</description>
+          <description>MongoDB: Memory: Virtual Memory Size (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1531,11 +1536,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Memory</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="mongoDB_plugin_checksum" value_type="4">
-          <description>Miscellaneous:  MongoDB Plugin Checksum</description>
+          <description>MongoDB: Miscellaneous:  MongoDB Plugin Checksum</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1564,11 +1569,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Miscellaneous</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="mongoDB_plugin_data_collection_time" value_type="3">
-          <description>Miscellaneous: MongoDB Plugin Data Collection Time (seconds)</description>
+          <description>MongoDB: Miscellaneous: MongoDB Plugin Data Collection Time (seconds)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1597,11 +1602,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Miscellaneous</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="mongoDB_plugin_version" value_type="4">
-          <description>Miscellaneous: MongoDB Plugin Version</description>
+          <description>MongoDB: Miscellaneous: MongoDB Plugin Version</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1630,11 +1635,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Miscellaneous</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="mongodb_version" value_type="4">
-          <description>Miscellaneous: MongoDB Version</description>
+          <description>MongoDB: Miscellaneous: MongoDB Version</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1663,11 +1668,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Miscellaneous</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="opcounters_command" value_type="3">
-          <description>OpCounters: Total Commands in Last 1 Minute</description>
+          <description>MongoDB: OpCounters: Total Commands in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1696,11 +1701,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>OpCounters</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="opcounters_delete" value_type="3">
-          <description>OpCounters: Total Delete Ops in Last 1 Minute</description>
+          <description>MongoDB: OpCounters: Total Delete Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1729,11 +1734,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>OpCounters</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="opcounters_getmore" value_type="3">
-          <description>OpCounters: Total Getmore Ops in Last 1 Minute</description>
+          <description>MongoDB: OpCounters: Total Getmore Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1762,11 +1767,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>OpCounters</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="opcounters_insert" value_type="3">
-          <description>OpCounters: Total Insert Ops in Last 1 Minute</description>
+          <description>MongoDB: OpCounters: Total Insert Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1795,11 +1800,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>OpCounters</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="opcounters_query" value_type="3">
-          <description>OpCounters: Total Query Ops in Last 1 Minute</description>
+          <description>MongoDB: OpCounters: Total Query Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1828,11 +1833,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>OpCounters</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="opcounters_update" value_type="3">
-          <description>OpCounters: Total Update Ops in Last 1 Minute</description>
+          <description>MongoDB: OpCounters: Total Update Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1861,11 +1866,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>OpCounters</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="oplog.rs_count" value_type="3">
-          <description>Replication: Entries in oplog.rs Collection</description>
+          <description>MongoDB: Replication: Entries in oplog.rs Collection</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1894,11 +1899,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Replication</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="repl_member_attention_state_count" value_type="3">
-          <description>Replication: Count of ReplicaSet Members Needing Attention</description>
+          <description>MongoDB: Replication: Count of ReplicaSet Members Needing Attention</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -1927,11 +1932,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Replication</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="repl_member_attention_state_info" value_type="4">
-          <description>Replication: List of ReplicaSet Members in Attention State</description>
+          <description>MongoDB: Replication: List of ReplicaSet Members in Attention State</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -1960,11 +1965,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Replication</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="replica_set_hosts" value_type="4">
-          <description>Replication: ReplicaSet Host Names</description>
+          <description>MongoDB: Replication: ReplicaSet Host Names</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -1993,11 +1998,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Replication</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="replica_set_member_count" value_type="3">
-          <description>Replication: ReplicaSet Member Count</description>
+          <description>MongoDB: Replication: ReplicaSet Member Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2026,11 +2031,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Replication</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="replica_set_name" value_type="1">
-          <description>Replication: ReplicaSet Name</description>
+          <description>MongoDB: Replication: ReplicaSet Name</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>30</history>
@@ -2059,11 +2064,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Replication</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="shard_chunk_count" value_type="3">
-          <description>Sharding: Total Number of Chunks</description>
+          <description>MongoDB: Sharding: Total Number of Chunks</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2092,11 +2097,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Sharding</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="shard_count" value_type="3">
-          <description>Sharding: Total Number of Shards</description>
+          <description>MongoDB: Sharding: Total Number of Shards</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2125,11 +2130,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Sharding</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="shard_info" value_type="4">
-          <description>Sharding: List of Shards in Cluster</description>
+          <description>MongoDB: Sharding: List of Shards in Cluster</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2158,11 +2163,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Sharding</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="sharded_collection_info" value_type="4">
-          <description>Sharding: List of Sharded Collections in Cluster</description>
+          <description>MongoDB: Sharding: List of Sharded Collections in Cluster</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2191,11 +2196,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Sharding</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="sharded_collections_count" value_type="3">
-          <description>Sharding: Total Number of Sharded Collections</description>
+          <description>MongoDB: Sharding: Total Number of Sharded Collections</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2224,11 +2229,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Sharding</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="total_collection_count" value_type="3">
-          <description>Databases and Collections: Total Collections Across All Databases</description>
+          <description>MongoDB: Databases and Collections: Total Collections Across All Databases</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2257,11 +2262,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="total_index_count" value_type="3">
-          <description>Databases and Collections: Total Indexes Across All Collections</description>
+          <description>MongoDB: Databases and Collections: Total Indexes Across All Collections</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2290,11 +2295,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="total_object_count" value_type="3">
-          <description>Databases and Collections: Total Objects Across All Databases</description>
+          <description>MongoDB: Databases and Collections: Total Objects Across All Databases</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2323,11 +2328,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="totalSize" value_type="0">
-          <description>Databases and Collections: Total Size of All Databases (MB)</description>
+          <description>MongoDB: Databases and Collections: Total Size of All Databases (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2356,11 +2361,11 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Databases and Collections</application>
+            <application>MongoDB</application>
           </applications>
         </item>
         <item type="2" key="uptime" value_type="3">
-          <description>Miscellaneous: MongoDB Uptime (seconds)</description>
+          <description>MongoDB: Miscellaneous: MongoDB Uptime (seconds)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
           <history>90</history>
@@ -2389,7 +2394,7 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <applications>
-            <application>Miscellaneous</application>
+            <application>MongoDB</application>
           </applications>
         </item>
       </items>
