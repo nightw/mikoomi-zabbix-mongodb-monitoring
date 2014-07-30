@@ -42,10 +42,10 @@ extension=mongo.so
 
 Ensure that the php MongoDB driver is setup and configured properly by testing out one of the sample php programs for MongoDB driver ([http://us2.php.net/manual/en/mongo.tutorial.php](http://us2.php.net/manual/en/mongo.tutorial.php)).
 
-Download the MongoDB Plugin shell script and php file from http://mikoomi.googlecode.com/svn/plugins/ and copy them into /etc/zabbix/externalscripts directory on the Zabbix server. **Make sure that the php script and shell script are made executable.**
+Download the MongoDB Plugin shell script and php file from [https://github.com/nightw/mikoomi-zabbix-mongodb-monitoring/find/master](https://github.com/nightw/mikoomi-zabbix-mongodb-monitoring/find/master) and copy them into `externalscripts` (e.g. `/etc/zabbix/externalscripts`) directory on the MongoDB node you want to monitor. **Make sure that the php script and shell script are made executable.**
 
 Next open up a browser and download the MongoDB Zabbix template.
-Now login to the Zabbix frontend (user = admin, password = zabbix).
+Now login to the Zabbix frontend (if it still has the default user and password, then it should be Admin/zabbix).
 
 Navigate as follows: 
 
@@ -63,25 +63,29 @@ Monitoring a MongoDB Environment (single server, replicaset or cluster)
  
 Follow these steps to start monitoring a MongoDB server
 
-* login to the Zabbix front-end and navigate to **_Configuration >> Hosts_**
-* Click on **_Create Host_** button on the top right-hand corner. 
-* Fill in the details - where Name = your choice of name for the MongoDB server to be monitored
-* Next click on the **_Add_** button in the **_Linked templates_** section of the screen.
-* You will see a list of templates - select the template **_Template_MongoDB_**
-
-In the Macros section, add the following three macros -
-
-* **{$MONGODB_HOSTNAME}** = Hostname or IP address of mongod or mongos process
-* **{$MONGODB_PORT}** = Port number for mongod or mongos process
-* **{$MONGODB_ZABBIX_NAME}** = The hostname for the MongoDB server/instance as defined in Zabbix
-
-Note that all the 3 macros above are required even if the defaults are used.
+* Setting up Zabbix server's side
+  * Make sure the host running the MongoDB is added to Zabbix Hosts previously (see host addition [here](https://www.zabbix.com/documentation/2.2/manual/quickstart/host))
+  * Login to the Zabbix front-end and navigate to **_Configuration >> Hosts_**
+  * Click on host which is running the MongoDB button on the left
+  * Click on **Templates** in the top menu bar
+  * Use the **Select** button on the right side
+  * Select the **Mikoomi Templates** group in the upper right corner
+  * Check **Template_MongoDB**
+  * Click on **Select** button
+  * Click on **Add** button
+  * Click **Save**
+* Setting up the MongoDB server node
+  * Add something like this (look out especially for the **ZABBIX_HOSTNAME** variable, which must meet the name of the node in the Zabbix server which we attached the template to in the previous steps) the following to the Zabbix user's crontab:
+```
+ZABBIX_HOSTNAME=$(hostname -f)
+* * * * * /etc/zabbix/externalscripts/mikoomi-mongodb-plugin.sh -z $ZABBIX_HOSTNAME
+```
 
 **Note that in a sharded and/or replicated MongoDB environment, you need to monitor only ONE of the mongos process**. However that process needs to be aware of the entire Mongo environment (or cluster) - i.e. all the shards and all the replicas within each replicaset. 
 
-Save the configuration and Zabbix should start collecting data within 60 seconds.
+Now data should be collected by the template at intervals of 60 seconds.
 
-Data is collected by the template at intervals of 60 seconds for each monitored MonogoDB server/environment.
+If something is wrong (data does not show up in the Zabbix server, etc.) then you should look at the output at /tmp/mikoomi-mongodb-plugin.php_*.log file)
 
 
 Monitored Metrics

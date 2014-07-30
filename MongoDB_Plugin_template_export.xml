@@ -1534,39 +1534,6 @@
             <application>Memory</application>
           </applications>
         </item>
-        <item type="10" key="mikoomi-mongodb-plugin.sh[-h {$SERVER} -p {$PORT} -z {HOSTNAME}]" value_type="3">
-          <description>Miscellaneous: Data Collector</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts>localhost</trapper_hosts>
-          <snmp_community></snmp_community>
-          <snmp_oid></snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <applications>
-            <application>Miscellaneous</application>
-          </applications>
-        </item>
         <item type="2" key="mongoDB_plugin_checksum" value_type="4">
           <description>Miscellaneous:  MongoDB Plugin Checksum</description>
           <ipmi_sensor></ipmi_sensor>
@@ -2641,16 +2608,6 @@
           </graph_elements>
         </graph>
       </graphs>
-      <macros>
-        <macro>
-          <value>MongoDB_Hostname</value>
-          <name>{$HOSTNAME}</name>
-        </macro>
-        <macro>
-          <value>MongDB_Server_Port</value>
-          <name>{$PORT}</name>
-        </macro>
-      </macros>
     </host>
   </hosts>
   <dependencies/>
