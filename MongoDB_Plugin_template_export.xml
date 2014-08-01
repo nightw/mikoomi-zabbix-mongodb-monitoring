@@ -2694,6 +2694,39 @@
             <application>MongoDB</application>
           </applications>
         </item>
+         <item type="2" key="total_index_size" value_type="0">
+          <description>MongoDB: Databases and Collections: Total Index Size Across All Collections (MB)</description>
+          <ipmi_sensor></ipmi_sensor>
+          <delay>60</delay>
+          <history>90</history>
+          <trends>365</trends>
+          <status>0</status>
+          <data_type>0</data_type>
+          <units></units>
+          <multiplier>0</multiplier>
+          <delta>0</delta>
+          <formula>0</formula>
+          <lastlogsize>0</lastlogsize>
+          <logtimefmt></logtimefmt>
+          <delay_flex></delay_flex>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <params></params>
+          <trapper_hosts></trapper_hosts>
+          <snmp_community></snmp_community>
+          <snmp_oid></snmp_oid>
+          <snmp_port>161</snmp_port>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <applications>
+            <application>MongoDB</application>
+          </applications>
+        </item>
         <item type="2" key="total_object_count" value_type="3">
           <description>MongoDB: Databases and Collections: Total Objects Across All Databases</description>
           <ipmi_sensor></ipmi_sensor>

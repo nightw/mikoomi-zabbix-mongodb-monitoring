@@ -341,6 +341,7 @@ $sharded_db_count = 0 ;
 $total_collection_count = 0 ;
 $total_object_count = 0 ;
 $total_index_count = 0 ;
+$total_index_size = 0.0 ;
 
 $is_sharded = 'No' ;
 
@@ -377,6 +378,7 @@ foreach($db_list['databases'] as $db) {
     $total_collection_count += $db_stats['collections'] ;
     $total_object_count += $db_stats['objects'] ;
     $total_index_count += $db_stats['indexes'] ;
+    $total_index_size += $db_stats['indexSize'] ;
 
     $db_info_array[$db['name']] .= ' collections=' . $db_stats['collections'] .
                                   ', objects=' . $db_stats['objects'] .
@@ -413,6 +415,9 @@ write_to_data_file("$zabbix_name total_collection_count $total_collection_count"
 write_to_data_file("$zabbix_name total_object_count $total_object_count") ;
 
 write_to_data_file("$zabbix_name total_index_count $total_index_count") ;
+
+$total_index_size = round($total_index_size/(1024*1024), 2) ;
+write_to_data_file("$zabbix_name total_index_size $total_index_size") ;
 
 write_to_data_file("$zabbix_name db_collections $db_info_collections") ;
 write_to_data_file("$zabbix_name db_objects $db_info_objects") ;
