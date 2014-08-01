@@ -2873,6 +2873,47 @@
             </graph_element>
           </graph_elements>
         </graph>
+        <graph name="MongoDB Flushing Performance" width="900" height="200">
+          <ymin_type>0</ymin_type>
+          <ymax_type>0</ymax_type>
+          <ymin_item_key></ymin_item_key>
+          <ymax_item_key></ymax_item_key>
+          <show_work_period>0</show_work_period>
+          <show_triggers>1</show_triggers>
+          <graphtype>0</graphtype>
+          <yaxismin>0.0000</yaxismin>
+          <yaxismax>100.0000</yaxismax>
+          <show_legend>0</show_legend>
+          <show_3d>0</show_3d>
+          <percent_left>0.0000</percent_left>
+          <percent_right>0.0000</percent_right>
+          <graph_elements>
+            <graph_element item="Template_MongoDB:backgroundFlushing_average_ms">
+              <drawtype>2</drawtype>
+              <sortorder>0</sortorder>
+              <color>000080</color>
+              <yaxisside>0</yaxisside>
+              <calc_fnc>7</calc_fnc>
+              <type>0</type>
+            </graph_element>
+            <graph_element item="Template_MongoDB:backgroundFlushing_last_ms">
+              <drawtype>2</drawtype>
+              <sortorder>1</sortorder>
+              <color>808000</color>
+              <yaxisside>0</yaxisside>
+              <calc_fnc>7</calc_fnc>
+              <type>0</type>
+            </graph_element>
+            <graph_element item="Template_MongoDB:backgroundFlushing_total_ms">
+              <drawtype>2</drawtype>
+              <sortorder>2</sortorder>
+              <color>00DD00</color>
+              <yaxisside>0</yaxisside>
+              <calc_fnc>7</calc_fnc>
+              <type>0</type>
+            </graph_element>
+          </graph_elements>
+        </graph>
         <graph name="MongoDB Database Operations" width="900" height="200">
           <ymin_type>0</ymin_type>
           <ymax_type>0</ymax_type>
