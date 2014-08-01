@@ -2851,7 +2851,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
             <graph_element item="Template_MongoDB:extra_info_heap_usage">
               <drawtype>2</drawtype>
@@ -2860,7 +2859,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
             <graph_element item="Template_MongoDB:mem_resident">
               <drawtype>2</drawtype>
@@ -2869,7 +2867,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
           </graph_elements>
         </graph>
@@ -2936,7 +2933,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
             <graph_element item="Template_MongoDB:opcounters_insert">
               <drawtype>2</drawtype>
@@ -2945,7 +2941,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
             <graph_element item="Template_MongoDB:opcounters_update">
               <drawtype>2</drawtype>
@@ -2954,7 +2949,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
             <graph_element item="Template_MongoDB:opcounters_delete">
               <drawtype>2</drawtype>
@@ -2963,7 +2957,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
             <graph_element item="Template_MongoDB:opcounters_command">
               <drawtype>2</drawtype>
@@ -2972,7 +2965,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
             <graph_element item="Template_MongoDB:opcounters_getmore">
               <drawtype>2</drawtype>
@@ -2981,7 +2973,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
           </graph_elements>
         </graph>
@@ -3007,7 +2998,6 @@
               <yaxisside>0</yaxisside>
               <calc_fnc>7</calc_fnc>
               <type>0</type>
-              <periods_cnt>5</periods_cnt>
             </graph_element>
           </graph_elements>
         </graph>
