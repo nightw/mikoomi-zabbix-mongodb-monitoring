@@ -27,9 +27,9 @@ THE SOFTWARE.
 
 error_reporting(E_PARSE) ;
 
-$options = getopt("Dh:p:z:u:x:") ;
+$options = getopt("Dh:p:z:u:x:", ["ssl"]) ;
 $command_name = basename($argv[0]) ;
-$command_version = "0.3" ;
+$command_version = "0.4" ;
 
 // Get data collection start time (we will use this to compute the total data collection time)
 $start_time = time() ;
@@ -38,14 +38,15 @@ $start_time = time() ;
 if (empty($options) or empty($options['z']) ) {
     echo "
 $command_name Version $command_version
-Usage : $command_name [-D] [-h <mongoDB Server Host>] [-p <mongoDB Port>] [-u <username>] [-x <password>] -z <Zabbix_Name>
+Usage : $command_name [-D] [-h <mongoDB Server Host>] [-p <mongoDB Port>] [--ssl] [-u <username>] [-x <password>] -z <Zabbix_Name>
 where
-   -D = Run in detail/debug mode
-   -h = Hostname or IP address of server running mongoDBB
-   -p = Port number on which to connect to the mongod or mongos process
-   -z = Name (hostname) of mongoDB instance or cluster in the Zabbix UI
-   -u = User name for database authentication
-   -x = Password for database authentication
+   -D    = Run in detail/debug mode
+   -h    = Hostname or IP address of server running MongoDB
+   -p    = Port number on which to connect to the mongod or mongos process
+   -z    = Name (hostname) of MongoDB instance or cluster in the Zabbix UI
+   -u    = User name for database authentication
+   -x    = Password for database authentication
+   --ssl = Use SSL when connecting to MongoDB
 "  ;
 
 exit ;
@@ -57,6 +58,13 @@ exit ;
 $zabbix_name = $options['z'] ;
 
 $debug_mode = isset($options['D']) ;
+
+$ssl = isset($options['ssl']) ;
+
+if ($ssl && !MONGO_SUPPORTS_SSL) {
+  echo "WARNING: --ssl option is specified, but we will not use it, because the PHP Mongo extension does not support SSL!\n" ;
+  $ssl = false ;
+}
 
 // Log file : contains execution and diagnostic information
 $log_file_name = "/tmp/${command_name}_${zabbix_name}.log" ;
@@ -130,6 +138,10 @@ if ((!empty($options['u'])) && (!empty($options['x']))) {
 }
 else {
     $connect_string = $mongodb_host . ':' . $mongodb_port ;
+}
+
+if ($ssl) {
+  $connect_string .= "/?ssl=true" ;
 }
 
 $mongo_connection = new Mongo("mongodb://$connect_string") ;
