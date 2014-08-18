@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 error_reporting(E_PARSE) ;
 
-$options = getopt("Dh:p:z:u:x:", ["ssl"]) ;
+$options = getopt("Dh:p:z:u:x:H:P:", ["ssl"]) ;
 $command_name = basename($argv[0]) ;
 $command_version = "0.4" ;
 
@@ -38,7 +38,7 @@ $start_time = time() ;
 if (empty($options) or empty($options['z']) ) {
     echo "
 $command_name Version $command_version
-Usage : $command_name [-D] [-h <mongoDB Server Host>] [-p <mongoDB Port>] [--ssl] [-u <username>] [-x <password>] -z <Zabbix_Name>
+Usage : $command_name [-D] [-h <mongoDB Server Host>] [-p <mongoDB Port>] [--ssl] [-u <username>] [-x <password>] [-H <Zabbix Server ip/hostname>] [-P <Zabbix Server Port>] -z <Zabbix_Name>
 where
    -D    = Run in detail/debug mode
    -h    = Hostname or IP address of server running MongoDB
@@ -46,6 +46,8 @@ where
    -z    = Name (hostname) of MongoDB instance or cluster in the Zabbix UI
    -u    = User name for database authentication
    -x    = Password for database authentication
+   -H    = Zabbix server IP or hostname
+   -P    = Zabbix server Port or hostname
    --ssl = Use SSL when connecting to MongoDB
 "  ;
 
@@ -56,6 +58,9 @@ exit ;
 // Setup log file, data file and zabbix hostname.
 //-------------------------------------------------------------------------//
 $zabbix_name = $options['z'] ;
+
+$zabbix_server = ($options['H'] ? $options['H'] : '127.0.0.1');
+$zabbix_server_port = ($options['P'] ? $options['P'] : '10051');
 
 $debug_mode = isset($options['D']) ;
 
@@ -206,7 +211,7 @@ write_to_data_file("$zabbix_name connections_available $connections_available") 
 $extra_info_heap_usage = round(($server_status['extra_info']['heap_usage_bytes'])/(1024*124), 2) ;
 write_to_data_file("$zabbix_name extra_info_heap_usage $extra_info_heap_usage") ;
 
-$extra_info_page_faults = $server_status['extra_info']['page_faults'] ;
+$extra_info_page_faults = ($server_status['extra_info']['page_faults'] ? $server_status['extra_info']['page_faults'] : 0);
 write_to_data_file("$zabbix_name extra_info_page_faults $extra_info_page_faults") ;
 
 if ($server_status['indexCounters']['btree']['accesses'] != null) {
@@ -580,7 +585,7 @@ write_to_data_file("$zabbix_name mongoDB_plugin_checksum $md5_checksum_string") 
 
 fclose($data_file_handle) ;
 
-exec("zabbix_sender -vv -z 127.0.0.1 -i $data_file_name 2>&1", $log_file_data) ;
+exec("zabbix_sender -vv -z $zabbix_server -p $zabbix_server_port -i $data_file_name 2>&1", $log_file_data) ;
 
 foreach ($log_file_data as $log_line) {
     write_to_log_file("$log_line\n") ;
