@@ -183,10 +183,10 @@ if (!isset($server_status['ok'])) {
 }
 
 $mongo_version = $server_status['version'] ;
-write_to_data_file($zabbix_name, "mongodb_version $mongo_version") ;
+write_to_data_file($zabbix_name, "mongodb_version", $mongo_version) ;
 
 $uptime = $server_status['uptime'] ;
-write_to_data_file($zabbix_name, "uptime $uptime") ;
+write_to_data_file($zabbix_name, "uptime", $uptime) ;
 
 $globalLock_lockTime = $server_status['globalLock']['lockTime'] ;
 write_to_data_file($zabbix_name, "globalLock_lockTime", $globalLock_lockTime) ;
