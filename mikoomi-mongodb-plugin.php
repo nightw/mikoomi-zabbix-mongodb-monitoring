@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 error_reporting(E_PARSE) ;
 
-$options = getopt("Dh:p:z:u:x:H:P:", ["ssl"]) ;
+$options = getopt("Dh:p:z:u:x:H:P:", array("ssl")) ;
 $command_name = basename($argv[0]) ;
 $command_version = "0.4" ;
 
