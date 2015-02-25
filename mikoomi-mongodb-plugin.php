@@ -473,7 +473,7 @@ if ($is_sharded == 'No') {
        foreach ($rs_status['members'] as $repl_set_member) {
            $repl_set_member_names .= 'host#' . $repl_set_member['_id'] . ' = ' . $repl_set_member['name'] . ' || ' ;
        }
-       write_to_data_file($zabbix_name, "replica_set_hosts ", $repl_set_member_names)  ;
+       write_to_data_file($zabbix_name, "replica_set_hosts", $repl_set_member_names)  ;
    
        $local_mongo_db_handle = $mongo_connection->selectDB('local') ;
        $col_name = 'oplog.rs' ;
