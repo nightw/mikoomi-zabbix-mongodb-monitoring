@@ -128,7 +128,7 @@ function write_to_data_file($zabbix_name, $key, $value)
     global $data_file_handle ;
     
     // Only if we have a value do we want to record this metric
-    if(isset($value))
+    if(isset($value) && $value !== '')
     {
     	$data_line = sprintf("\"%s\" \"%s\" \"%s\"\n", $zabbix_name, $key, $value);
     
