@@ -59,7 +59,7 @@ exit ;
 //-------------------------------------------------------------------------//
 $zabbix_name = $options['z'] ;
 
-// Remove spaces from zabbix name for file data and log file creation 
+// Remove spaces from zabbix name for file data and log file creation
 $file_base_name = str_replace(' ', '_', $zabbix_name);
 
 $zabbix_server = ($options['H'] ? $options['H'] : '127.0.0.1');
@@ -126,12 +126,12 @@ function write_to_data_file($zabbix_name, $key, $value)
 //-------------------------------------------------------------------------//
 {
     global $data_file_handle ;
-    
+
     // Only if we have a value do we want to record this metric
     if(isset($value) && $value !== '')
     {
     	$data_line = sprintf("\"%s\" \"%s\" \"%s\"\n", $zabbix_name, $key, $value);
-    
+
     	fwrite($data_file_handle, $data_line) ;
     }
 }
@@ -468,24 +468,46 @@ if ($is_sharded == 'No') {
        write_to_data_file($zabbix_name, "is_replica_set", "Yes") ;
        write_to_data_file($zabbix_name, "replica_set_name", $rs_status['set']) ;
        write_to_data_file($zabbix_name, "replica_set_member_count", count($rs_status['members']) )  ;
-   
+
        $repl_set_member_names = '' ;
        foreach ($rs_status['members'] as $repl_set_member) {
            $repl_set_member_names .= 'host#' . $repl_set_member['_id'] . ' = ' . $repl_set_member['name'] . ' || ' ;
        }
        write_to_data_file($zabbix_name, "replica_set_hosts", $repl_set_member_names)  ;
-   
+
        $local_mongo_db_handle = $mongo_connection->selectDB('local') ;
        $col_name = 'oplog.rs' ;
        $mongo_collection = $local_mongo_db_handle->$col_name ;
        $oplog_rs_count = $mongo_collection->count() ;
        write_to_data_file($zabbix_name, "oplog.rs_count", $oplog_rs_count)  ;
-   
+
        //$rs_status = $mongo_db_handle->execute("$command") ;
        $repl_member_attention_state_count = 0 ;
        $repl_member_attenntion_state_info = '' ;
+
        foreach($rs_status['members'] as $member) {
            $member_state = $member['state'] ;
+
+            $host = explode(':', $member['name']);
+            $hostname = $host[0];
+
+            if ($member_state == 1) {
+                $master_optime = $member['optime'];
+            }
+
+            if ($mongodb_host !== $hostname) {
+                continue;
+            }
+
+            $mongo_host_optime = $member['optime'];
+            $seconds = $master_optime->sec - $mongo_host_optime->sec;
+
+            if ($seconds < 0) {
+                $seconds = 0;
+            }
+
+            write_to_data_file($zabbix_name, "repl_member_replication_lag_sec", $repl_member_attention_state_count) ;
+
            if($member_state == 0 or $member_state == 3 or $member_state == 4 or $member_state == 5 or $member_state == 6 or $member_state == 8) {
                // 0 = Starting up, phase 1
                // 1 = primary
