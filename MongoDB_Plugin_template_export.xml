@@ -2502,6 +2502,49 @@
             <application>MongoDB</application>
           </applications>
         </item>
+        <item>
+          <name>MongoDB: Replication: ReplicaSet Lag (seconds)</name>
+            <type>2</type>
+            <snmp_community/>
+            <multiplier>0</multiplier>
+            <snmp_oid/>
+            <key>repl_member_replication_lag_sec</key>
+            <delay>0</delay>
+            <history>30</history>
+            <trends>365</trends>
+            <status>0</status>
+            <value_type>3</value_type>
+            <allowed_hosts/>
+            <units/>
+            <delta>0</delta>
+            <snmpv3_contextname/>
+            <snmpv3_securityname/>
+            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+            <snmpv3_authpassphrase/>
+            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+            <snmpv3_privpassphrase/>
+            <formula>1</formula>
+            <delay_flex/>
+            <params/>
+            <ipmi_sensor/>
+            <data_type>0</data_type>
+            <authtype>0</authtype>
+            <username/>
+            <password/>
+            <publickey/>
+            <privatekey/>
+            <port/>
+            <description/>
+            <inventory_link>0</inventory_link>
+            <applications>
+                <application>
+                    <name>MongoDB</name>
+                </application>
+            </applications>
+            <valuemap/>
+            <logtimefmt/>
+        </item>
         <item type="2" key="replica_set_member_count" value_type="3">
           <description>MongoDB: Replication: ReplicaSet Member Count</description>
           <ipmi_sensor></ipmi_sensor>
