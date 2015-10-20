@@ -506,7 +506,7 @@ if ($is_sharded == 'No') {
                 $seconds = 0;
             }
 
-            write_to_data_file($zabbix_name, "repl_member_replication_lag_sec", $repl_member_attention_state_count) ;
+            write_to_data_file($zabbix_name, "repl_member_replication_lag_sec", $seconds) ;
 
            if($member_state == 0 or $member_state == 3 or $member_state == 4 or $member_state == 5 or $member_state == 6 or $member_state == 8) {
                // 0 = Starting up, phase 1
