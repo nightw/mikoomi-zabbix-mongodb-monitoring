@@ -495,7 +495,10 @@ if ($is_sharded == 'No') {
                 $master_optime = $member['optime'];
             }
 
-            if ($mongodb_host !== $hostname) {
+            $fqdn = explode('.', $mongodb_host);
+            $mongodb_host_simple = $fqdn[0];
+
+            if ($mongodb_host_simple !== $hostname) {
                 continue;
             }
 
