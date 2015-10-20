@@ -498,7 +498,7 @@ if ($is_sharded == 'No') {
             $fqdn = explode('.', $mongodb_host);
             $mongodb_host_simple = $fqdn[0];
 
-            if ($mongodb_host_simple !== $hostname) {
+            if (!in_array($hostname, array($mongodb_host_simple, $mongodb_host))) {
                 continue;
             }
 
