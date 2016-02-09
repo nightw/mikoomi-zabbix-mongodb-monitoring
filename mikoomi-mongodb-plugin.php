@@ -74,44 +74,24 @@ if ($ssl && !MONGO_SUPPORTS_SSL) {
   $ssl = false ;
 }
 
-// Log file : contains execution and diagnostic information
-$log_file_name = "/tmp/${command_name}_${file_base_name}.log" ;
-$log_file_handle = fopen($log_file_name, 'w') ;
-$log_file_data = array() ;
-
 $data_lines = array() ;
 
 $md5_checksum_string = md5_file($argv[0]) ;
 
 if ($debug_mode) {
-    write_to_log_file("$command_name version $command_version\n") ;
+    write_to_log_file("version $command_version") ;
 }
 //-------------------------------------------------------------------------//
 
 //-------------------------------------------------------------------------//
-function write_to_log_file($output_line)
+function write_to_log($output_line)
 //-------------------------------------------------------------------------//
 {
     global $command_name ;
-    global $log_file_handle ;
-    fwrite($log_file_handle, "$output_line\n") ;
+    fprintf(STDERR, "%s: %s\n", $command_name, $output_line) ;
 }
 //-------------------------------------------------------------------------//
 
-
-
-//-------------------------------------------------------------------------//
-function debug_output($output_line)
-//-------------------------------------------------------------------------//
-{
-    global $debug_mode ;
-    global $command_name ;
-    global $log_file_handle ;
-    if ($debug_mode) {
-        fwrite($log_file_handle, "$output_line\n") ;
-    }
-}
-//-------------------------------------------------------------------------//
 
 
 //-------------------------------------------------------------------------//
@@ -154,11 +134,11 @@ if ($ssl) {
 $mongo_connection = new Mongo("mongodb://$connect_string") ;
 
 if (is_null($mongo_connection)) {
-    write_to_log_file("$command_name:Error in connection to mongoDB using connect string $connect_string") ;
+    write_to_log("Error in connection to mongoDB using connect string $connect_string") ;
     exit ;
 }
 else {
-    write_to_log_file("$command_name:Successfully connected to mongoDB using connect string $connect_string") ;
+    write_to_log("Successfully connected to mongoDB using connect string $connect_string") ;
 }
 
 
@@ -170,7 +150,7 @@ $mongo_db_handle = $mongo_connection->selectDB("config") ;
 $server_status = $mongo_db_handle->command(array('serverStatus'=>1)) ;
 
 if (!isset($server_status['ok'])) {
-    write_to_log_file("$command_name:Error in executing $command.") ;
+    write_to_log("Error in executing $command.") ;
     exit ;
 }
 
@@ -394,7 +374,7 @@ foreach($db_list['databases'] as $db) {
     $execute_status = $db_stats['ok'] ;
 
     if ($execute_status == 0) {
-        write_to_log_file("$command_name:Error in executing $command for database".$db['name']) ;
+        write_to_log("Error in executing $command for database ".$db['name']) ;
         exit ;
     }
 
@@ -632,17 +612,15 @@ if (is_resource($process)) {
     fclose($pipes[0]) ;
 
     while($s = fgets($pipes[1], 1024)) {
-        write_to_log_file("O: " . trim($s)) ;
+        write_to_log("O: " . trim($s)) ;
     }
     fclose($pipes[1]);
 
     while($s= fgets($pipes[2], 1024)) {
-        write_to_log_file("E: " . trim($s)) ;
+        write_to_log("E: " . trim($s)) ;
     }
     fclose($pipes[2]) ;
 }
-
-fclose($log_file_handle) ;
 
 exit ;
 
