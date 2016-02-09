@@ -348,16 +348,16 @@ $total_index_size = 0.0 ;
 
 $is_sharded = 'No' ;
 
-$db_info_array = '' ;
-$db_info_collections = '' ;
-$db_info_objects = '' ;
-$db_info_indexes = '' ;
-$db_info_avgObjSize = '' ;
-$db_info_dataSize = '' ;
-$db_info_indexSize = '' ;
-$db_info_storageSize = '' ;
-$db_info_numExtents_array = '' ;
-$db_info_fileSize = '' ;
+$db_info_array = array() ;
+$db_info_collections = array() ;
+$db_info_objects = array() ;
+$db_info_indexes = array() ;
+$db_info_avgObjSize = array() ;
+$db_info_dataSize = array() ;
+$db_info_indexSize = array() ;
+$db_info_storageSize = array() ;
+$db_info_numExtents_array = array() ;
+$db_info_fileSize = array() ;
 
 
 foreach($db_list['databases'] as $db) {
@@ -383,33 +383,19 @@ foreach($db_list['databases'] as $db) {
     $total_index_count += $db_stats['indexes'] ;
     $total_index_size += $db_stats['indexSize'] ;
 
-    $db_info_array[$db['name']] .= ' collections=' . $db_stats['collections'] .
-                                  ', objects=' . $db_stats['objects'] .
-                                  ', indexes=' . $db_stats['indexes']  .
-                                  ', avgObjSize=' . $db_stats['avgObjSize']  .
-                                  ', dataSize=' . $db_stats['dataSize']  .
-                                  ', indexSize=' . $db_stats['indexSize']  .
-                                  ', storageSize=' . $db_stats['storageSize']  .
-                                  ', numExtents=' . $db_stats['numExtents']  .
-                                  ', fileSize=' . $db_stats['fileSize']  ;
-
-    $db_info_collections .= $db['name'] . '=' . $db_stats['collections'] . ' || ' ;
-    $db_info_objects .= $db['name'] . '=' . $db_stats['objects'] . ' || ' ;
-    $db_info_indexes .= $db['name'] . '=' . $db_stats['indexes'] . ' || ' ;
-    $db_info_avgObjSize .= $db['name'] . '=' . $db_stats['avgObjSize'] . ' || ';
-    $db_info_dataSize .= $db['name'] . '=' . $db_stats['dataSize'] . ' || ';
-    $db_info_indexSize .= $db['name'] . '=' . $db_stats['indexSize'] . ' || ';
-    $db_info_storageSize .= $db['name'] . '=' . $db_stats['storageSize'] . ' || ';
-    $db_info_numExtents_array .= $db['name'] . '=' . $db_stats['numExtents'] . ' || ';
-    $db_info_fileSize .= $db['name'] . '=' . $db_stats['fileSize'] . ' || ';
+    $db_info_array[] = array("{#DBNAME}" => $db['name']) ;
+    $db_info_collections[$db['name']] = $db_stats['collections'] ;
+    $db_info_objects[$db['name']] = $db_stats['objects'] ;
+    $db_info_indexes[$db['name']] = $db_stats['indexes'] ;
+    $db_info_avgObjSize[$db['name']] = $db_stats['avgObjSize'] ;
+    $db_info_dataSize[$db['name']] = $db_stats['dataSize'] ;
+    $db_info_indexSize[$db['name']] = $db_stats['indexSize'] ;
+    $db_info_storageSize[$db['name']] = $db_stats['storageSize'] ;
+    $db_info_numExtents_array[$db['name']] = $db_stats['numExtents'] ;
+    $db_info_fileSize[$db['name']] = $db_stats['fileSize'] ;
 }
 
-$db_info = '';
-foreach($db_info_array as $key=>$value) {
-   $db_info .= $key . ':' . $value . ' || ' ;
-}
-
-write_to_data_lines($zabbix_name, "database_info", $db_info) ;
+write_to_data_lines($zabbix_name, "db.discovery", str_replace("\"", "\\\"", json_encode(array("data" => $db_info_array)))) ;
 
 write_to_data_lines($zabbix_name, "is_sharded", $is_sharded) ;
 
@@ -422,15 +408,17 @@ write_to_data_lines($zabbix_name, "total.index.count", $total_index_count) ;
 $total_index_size = round($total_index_size/(1024*1024), 2) ;
 write_to_data_lines($zabbix_name, "total.index.size", $total_index_size) ;
 
-write_to_data_lines($zabbix_name, "db.collections", $db_info_collections) ;
-write_to_data_lines($zabbix_name, "db.objects", $db_info_objects) ;
-write_to_data_lines($zabbix_name, "db.indexes", $db_info_indexes) ;
-write_to_data_lines($zabbix_name, "db.avgObjSize", $db_info_avgObjSize) ;
-write_to_data_lines($zabbix_name, "db.dataSize", $db_info_dataSize) ;
-write_to_data_lines($zabbix_name, "db.indexSize", $db_info_indexSize) ;
-write_to_data_lines($zabbix_name, "db.storageSize", $db_info_storageSize) ;
-write_to_data_lines($zabbix_name, "db.numExtents", $db_info_numExtents_array) ;
-write_to_data_lines($zabbix_name, "db.fileSize", $db_info_fileSize) ;
+foreach($db_info_collections as $name => $dummy) {
+    write_to_data_lines($zabbix_name, "db.collections[" . $name . "]", $db_info_collections[$name]) ;
+    write_to_data_lines($zabbix_name, "db.objects[" . $name . "]", $db_info_objects[$name]) ;
+    write_to_data_lines($zabbix_name, "db.indexes[" . $name . "]", $db_info_indexes[$name]) ;
+    write_to_data_lines($zabbix_name, "db.avgObjSize[" . $name . "]", $db_info_avgObjSize[$name]) ;
+    write_to_data_lines($zabbix_name, "db.dataSize[" . $name . "]", $db_info_dataSize[$name]) ;
+    write_to_data_lines($zabbix_name, "db.indexSize[" . $name . "]", $db_info_indexSize[$name]) ;
+    write_to_data_lines($zabbix_name, "db.storageSize[" . $name . "]", $db_info_storageSize[$name]) ;
+    write_to_data_lines($zabbix_name, "db.numExtents[" . $name . "]", $db_info_numExtents_array[$name]) ;
+    write_to_data_lines($zabbix_name, "db.fileSize[" . $name . "]", $db_info_fileSize[$name]) ;
+}
 
 
 //-----------------------------
