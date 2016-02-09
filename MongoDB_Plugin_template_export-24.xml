@@ -28,7 +28,7 @@
         <trigger>
           <description>MongoDB: One or more databases have been created</description>
           <type>0</type>
-          <expression>{Template_MongoDB:db_count.last(0)}&gt;{Template_MongoDB:db_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.db.count.last(0)}&gt;{Template_MongoDB:mongodb.db.count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>1</priority>
@@ -37,7 +37,7 @@
         <trigger>
           <description>MongoDB: One or more databases have been destroyed</description>
           <type>0</type>
-          <expression>{Template_MongoDB:db_count.last(0)}&lt;{Template_MongoDB:db_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.db.count.last(0)}&lt;{Template_MongoDB:mongodb.db.count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>2</priority>
@@ -46,7 +46,7 @@
         <trigger>
           <description>MongoDB: No Data Received in 5 minutes</description>
           <type>0</type>
-          <expression>{Template_MongoDB:mongoDB_plugin_checksum.nodata(300)}=1</expression>
+          <expression>{Template_MongoDB:mongodb.plugin.checksum.nodata(300)}=1</expression>
           <url></url>
           <status>0</status>
           <priority>4</priority>
@@ -55,7 +55,7 @@
         <trigger>
           <description>MongoDB: One or more replication members need attention</description>
           <type>0</type>
-          <expression>{Template_MongoDB:repl_member_attention_state_count.last(0)}&gt;0</expression>
+          <expression>{Template_MongoDB:mongodb.repl_member_attention_state_count.last(0)}&gt;0</expression>
           <url></url>
           <status>0</status>
           <priority>4</priority>
@@ -64,7 +64,7 @@
         <trigger>
           <description>MongoDB: One or more members have been removed from the ReplicaSet</description>
           <type>0</type>
-          <expression>{Template_MongoDB:replica_set_member_count.last(0)}&lt;{Template_MongoDB:replica_set_member_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.replica_set_member_count.last(0)}&lt;{Template_MongoDB:mongodb.replica_set_member_count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>4</priority>
@@ -73,7 +73,7 @@
         <trigger>
           <description>MongoDB: One or more members have been added to the ReplicaSet</description>
           <type>0</type>
-          <expression>{Template_MongoDB:replica_set_member_count.last(0)}&gt;{Template_MongoDB:replica_set_member_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.replica_set_member_count.last(0)}&gt;{Template_MongoDB:mongodb.replica_set_member_count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>1</priority>
@@ -82,7 +82,7 @@
         <trigger>
           <description>MongoDB: One or more new shard chunks have been created</description>
           <type>0</type>
-          <expression>{Template_MongoDB:shard_chunk_count.last(0)}&gt;{Template_MongoDB:shard_chunk_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.shard_chunk_count.last(0)}&gt;{Template_MongoDB:mongodb.shard_chunk_count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>1</priority>
@@ -91,7 +91,7 @@
         <trigger>
           <description>MongoDB: One or more shards have been added to the cluster</description>
           <type>0</type>
-          <expression>{Template_MongoDB:shard_count.last(0)}&gt;{Template_MongoDB:shard_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.shard_count.last(0)}&gt;{Template_MongoDB:mongodb.shard_count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>1</priority>
@@ -100,7 +100,7 @@
         <trigger>
           <description>MongoDB: One or more shards have been removed from the cluster</description>
           <type>0</type>
-          <expression>{Template_MongoDB:shard_count.last(0)}&lt;{Template_MongoDB:shard_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.shard_count.last(0)}&lt;{Template_MongoDB:mongodb.shard_count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>4</priority>
@@ -109,7 +109,7 @@
         <trigger>
           <description>MongoDB: One or more new sharded collections have been created</description>
           <type>0</type>
-          <expression>{Template_MongoDB:sharded_collections_count.last(0)}&gt;{Template_MongoDB:sharded_collections_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.sharded_collections_count.last(0)}&gt;{Template_MongoDB:mongodb.sharded_collections_count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>1</priority>
@@ -118,7 +118,7 @@
         <trigger>
           <description>MongoDB: One or more collections have been dropped</description>
           <type>0</type>
-          <expression>{Template_MongoDB:total_collection_count.last(0)}&lt;{Template_MongoDB:total_collection_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.total.collection.count.last(0)}&lt;{Template_MongoDB:mongodb.total.collection.count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>2</priority>
@@ -127,7 +127,7 @@
         <trigger>
           <description>MongoDB: One or more collections have been added</description>
           <type>0</type>
-          <expression>{Template_MongoDB:total_collection_count.last(0)}&gt;{Template_MongoDB:total_collection_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.total.collection.count.last(0)}&gt;{Template_MongoDB:mongodb.total.collection.count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>1</priority>
@@ -136,7 +136,7 @@
         <trigger>
           <description>MongoDB: One or more indexes have been dropped</description>
           <type>0</type>
-          <expression>{Template_MongoDB:total_index_count.last(0)}&lt;{Template_MongoDB:total_index_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.total.index.count.last(0)}&lt;{Template_MongoDB:mongodb.total.index.count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>2</priority>
@@ -145,7 +145,7 @@
         <trigger>
           <description>MongoDB: One or more indexes have been added</description>
           <type>0</type>
-          <expression>{Template_MongoDB:total_index_count.last(0)}&gt;{Template_MongoDB:total_index_count.last(1)}</expression>
+          <expression>{Template_MongoDB:mongodb.total.index.count.last(0)}&gt;{Template_MongoDB:mongodb.total.index.count.last(1)}</expression>
           <url></url>
           <status>0</status>
           <priority>1</priority>
@@ -153,7 +153,7 @@
         </trigger>
       </triggers>
       <items>
-        <item type="2" key="asserts_msg" value_type="3">
+        <item type="2" key="mongodb.asserts.msg" value_type="3">
           <description>MongoDB: Asserts: Total Msg Asserts</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -186,7 +186,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="asserts_regular" value_type="3">
+        <item type="2" key="mongodb.asserts.regular" value_type="3">
           <description>MongoDB: Asserts: Total Regular Asserts</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -219,7 +219,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="asserts_rollovers" value_type="3">
+        <item type="2" key="mongodb.asserts.rollovers" value_type="3">
           <description>MongoDB: Asserts: Total Assert Rollovers</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -252,7 +252,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="asserts_user" value_type="3">
+        <item type="2" key="mongodb.asserts.user" value_type="3">
           <description>MongoDB: Asserts: Total User Asserts</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -285,7 +285,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="asserts_warning" value_type="3">
+        <item type="2" key="mongodb.asserts.warning" value_type="3">
           <description>MongoDB: Asserts: Total Warning Asserts</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -318,7 +318,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="backgroundFlushing_average_ms" value_type="0">
+        <item type="2" key="mongodb.backgroundFlushing.average_ms" value_type="0">
           <description>MongoDB: Background Flushing: Background Flush Average Time (ms)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -351,7 +351,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="backgroundFlushing_flushes" value_type="3">
+        <item type="2" key="mongodb.backgroundFlushing.flushes" value_type="3">
           <description>MongoDB: Background Flushing: Number of Flushes in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -384,7 +384,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="backgroundFlushing_last_ms" value_type="0">
+        <item type="2" key="mongodb.backgroundFlushing.last_ms" value_type="0">
           <description>MongoDB: Background Flushing: Last Background Flush Time (ms)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -417,7 +417,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="backgroundFlushing_total_ms" value_type="0">
+        <item type="2" key="mongodb.backgroundFlushing.total_ms" value_type="0">
           <description>MongoDB: Background Flushing: Total Background Flush Time (ms) in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -450,7 +450,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="connections_available" value_type="3">
+        <item type="2" key="mongodb.connections.available" value_type="3">
           <description>MongoDB: Database Connections: Connections Available</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -483,7 +483,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="connections_current" value_type="3">
+        <item type="2" key="mongodb.connections.current" value_type="3">
           <description>MongoDB: Database Connections: Current Connections</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -516,7 +516,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="cursors_clientCursors_size" value_type="3">
+        <item type="2" key="mongodb.cursors.clientCursors_size" value_type="3">
           <description>MongoDB: Cursors: Client Cursor Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -549,7 +549,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="cursors_timedOut" value_type="3">
+        <item type="2" key="mongodb.cursors.timedOut" value_type="3">
           <description>MongoDB: Cursors: Cursor Time Outs</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -582,7 +582,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="cursors_totalOpen" value_type="3">
+        <item type="2" key="mongodb.cursors.totalOpen" value_type="3">
           <description>MongoDB: Cursors: Open Curors</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -615,7 +615,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="database_info" value_type="4">
+        <item type="2" key="mongodb.database_info" value_type="4">
           <description>MongoDB: Databases and Collections: List of All Database Stats</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -648,7 +648,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_avgObjSize" value_type="4">
+        <item type="2" key="mongodb.db_avgObjSize" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database Average Object Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -681,7 +681,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_collections" value_type="4">
+        <item type="2" key="mongodb.db_collections" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database Collection Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -714,7 +714,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_count" value_type="3">
+        <item type="2" key="mongodb.db.count" value_type="3">
           <description>MongoDB: Databases and Collections: Database Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -747,7 +747,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_dataSize" value_type="4">
+        <item type="2" key="mongodb.db_dataSize" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database Data Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -780,7 +780,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_fileSize" value_type="4">
+        <item type="2" key="mongodb.db_fileSize" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database File Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -813,7 +813,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_indexes" value_type="4">
+        <item type="2" key="mongodb.db_indexes" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database Index Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -846,7 +846,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_indexSize" value_type="4">
+        <item type="2" key="mongodb.db_indexSize" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database Index Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -879,7 +879,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_info" value_type="4">
+        <item type="2" key="mongodb.db.info" value_type="4">
           <description>MongoDB: Sharding: List of Sharded Databases and Collections</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -912,7 +912,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_numExtents" value_type="4">
+        <item type="2" key="mongodb.db_numExtents" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database Extent Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -945,7 +945,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_objects" value_type="4">
+        <item type="2" key="mongodb.db_objects" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database Object Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -978,7 +978,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="db_storageSize" value_type="4">
+        <item type="2" key="mongodb.db_storageSize" value_type="4">
           <description>MongoDB: Databases and Collections: List of Database Storage Size</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1011,7 +1011,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="extra_info_heap_usage" value_type="0">
+        <item type="2" key="mongodb.extra_info.heap_usage" value_type="0">
           <description>MongoDB: Memory: Heap Memory Size (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1044,7 +1044,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="extra_info_page_faults" value_type="3">
+        <item type="2" key="mongodb.extra_info.page_faults" value_type="3">
           <description>MongoDB: Memory: Page Faults/minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1077,7 +1077,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="globalLock_currentQueue_readers" value_type="3">
+        <item type="2" key="mongodb.globalLock.currentQueue.readers" value_type="3">
           <description>MongoDB: Global Locking: Current Reader Queue Length</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1110,7 +1110,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="globalLock_currentQueue_total" value_type="3">
+        <item type="2" key="mongodb.globalLock.currentQueue.total" value_type="3">
           <description>MongoDB: Global Locking: Current Total Queue Length</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1143,7 +1143,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="globalLock_currentQueue_writers" value_type="3">
+        <item type="2" key="mongodb.globalLock.currentQueue.writers" value_type="3">
           <description>MongoDB: Global Locking: Current Writer Queue Length</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1176,7 +1176,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="globalLock_lockTime" value_type="3">
+        <item type="2" key="mongodb.globalLock.lockTime" value_type="3">
           <description>MongoDB: Global Locking: Total Lock Time (microseconds) in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1209,7 +1209,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="15" key="globalLock_lockPercent" value_type="0">
+        <item type="15" key="mongodb.globalLock.lockPercent" value_type="0">
           <description>MongoDB: Global Locking: Percent of Locking Time in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1238,13 +1238,13 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <params>
-            <formula>100*last("globalLock_lockTime")/1000000</formula>
+            <formula>100*last("mongodb.globalLock.lockTime")/1000000</formula>
           </params>
           <applications>
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="globalLock_totalTime" value_type="3">
+        <item type="2" key="mongodb.globalLock.totalTime" value_type="3">
           <description>MongoDB: Global Locking: Total Time (microseconds) in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1277,7 +1277,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="indexCounters_btree_accesses" value_type="3">
+        <item type="2" key="mongodb.indexCounters.btree.accesses" value_type="3">
           <description>MongoDB: Index Effectiveness: Total Btree Accesses in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1310,7 +1310,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="indexCounters_btree_hits" value_type="3">
+        <item type="2" key="mongodb.indexCounters.btree.hits" value_type="3">
           <description>MongoDB: Index Effectiveness: Total Btree Hits in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1343,7 +1343,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="indexCounters_btree_misses" value_type="3">
+        <item type="2" key="mongodb.indexCounters.btree.misses" value_type="3">
           <description>MongoDB: Index Effectiveness: Total Btree Misses in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1376,7 +1376,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="indexCounters_btree_missRatio" value_type="0">
+        <item type="2" key="mongodb.indexCounters.btree.missRatio" value_type="0">
           <description>MongoDB: Index Effectiveness: Btree Miss Ratio</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1409,7 +1409,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="indexCounters_btree_resets" value_type="3">
+        <item type="2" key="mongodb.indexCounters.btree.resets" value_type="3">
           <description>MongoDB: Index Effectiveness: Total Btree Resets</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1442,7 +1442,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="logging_commits" value_type="3">
+        <item type="2" key="mongodb.logging.commits" value_type="3">
           <description>MongoDB: Journaling: Commits in last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1475,7 +1475,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="logging_journal_writes_mb" value_type="0">
+        <item type="2" key="mongodb.logging.journal_writes_mb" value_type="0">
           <description>MongoDB: Journaling: Journal Writes (MB) in last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1508,7 +1508,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="logging_datafile_writes_mb" value_type="0">
+        <item type="2" key="mongodb.logging.datafile_writes_mb" value_type="0">
           <description>MongoDB: Journaling: Datafile Writes (MB) in last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1541,7 +1541,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="logging_commits_in_writelock" value_type="3">
+        <item type="2" key="mongodb.logging.commits_in_writelock" value_type="3">
           <description>MongoDB: Journaling: Commits in Writelocks in last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1574,7 +1574,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="logging_early_commits" value_type="3">
+        <item type="2" key="mongodb.logging.early_commits" value_type="3">
           <description>MongoDB: Journaling: Early Commits in last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1607,7 +1607,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="logging_log_buffer_prep_time_ms" value_type="3">
+        <item type="2" key="mongodb.logging.log_buffer_prep_time_ms" value_type="3">
           <description>MongoDB: Journaling: Log Buffer Prep Time (ms) in last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1640,7 +1640,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="logging_journal_write_time_ms" value_type="3">
+        <item type="2" key="mongodb.logging.journal_write_time_ms" value_type="3">
           <description>MongoDB: Journaling: Journal Write Time (ms) in last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1673,7 +1673,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="logging_datafile_write_time_ms" value_type="3">
+        <item type="2" key="mongodb.logging.datafile_write_time_ms" value_type="3">
           <description>MongoDB: Journaling: Datafile Write Time (ms) in last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1706,7 +1706,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="is_replica_set" value_type="1">
+        <item type="2" key="mongodb.is_replica_set" value_type="1">
           <description>MongoDB: Replication: Is Mongo Server Part of a ReplicatSet</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1739,7 +1739,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="is_sharded" value_type="1">
+        <item type="2" key="mongodb.is_sharded" value_type="1">
           <description>MongoDB: Sharding: Is Mongo Server a Cluster Router (mongos process)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1772,7 +1772,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="mem_bits" value_type="3">
+        <item type="2" key="mongodb.mem.bits" value_type="3">
           <description>MongoDB: Memory: Memory Addressing (32/64 bit)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1805,7 +1805,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="mem_resident" value_type="3">
+        <item type="2" key="mongodb.mem.resident" value_type="3">
           <description>MongoDB: Memory: Resident Memory Size (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1838,7 +1838,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="mem_virtual" value_type="3">
+        <item type="2" key="mongodb.mem.virtual" value_type="3">
           <description>MongoDB: Memory: Virtual Memory Size (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1871,7 +1871,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="mongoDB_plugin_checksum" value_type="4">
+        <item type="2" key="mongodb.plugin.checksum" value_type="4">
           <description>MongoDB: Miscellaneous:  MongoDB Plugin Checksum</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1904,7 +1904,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="mongoDB_plugin_data_collection_time" value_type="3">
+        <item type="2" key="mongodb.plugin.data_collection_time" value_type="3">
           <description>MongoDB: Miscellaneous: MongoDB Plugin Data Collection Time (seconds)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1937,7 +1937,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="mongoDB_plugin_version" value_type="4">
+        <item type="2" key="mongodb.plugin.version" value_type="4">
           <description>MongoDB: Miscellaneous: MongoDB Plugin Version</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -1970,7 +1970,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="mongodb_version" value_type="4">
+        <item type="2" key="mongodb.version" value_type="4">
           <description>MongoDB: Miscellaneous: MongoDB Version</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2003,7 +2003,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="network_inbound_traffic_mb" value_type="0">
+        <item type="2" key="mongodb.network.inbound.traffic_mb" value_type="0">
           <description>MongoDB: Network Activity: Network Sum Inbound Traffic (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2036,7 +2036,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="15" key="network_inbound_traffic_mbit_per_second" value_type="0">
+        <item type="15" key="mongodb.network.inbound.traffic_mbit_per_second" value_type="0">
           <description>MongoDB: Network Activity: Average Inbound Traffic</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2065,13 +2065,13 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <params>
-            <formula>((last("network_inbound_traffic_mb",#1) - last("network_inbound_traffic_mb",#2)) * 8) / 60</formula>
+            <formula>((last("mongodb.network.inbound.traffic_mb",#1) - last("mongodb.network.inbound.traffic_mb",#2)) * 8) / 60</formula>
           </params>
           <applications>
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="network_outbound_traffic_mb" value_type="0">
+        <item type="2" key="mongodb.network.outbound.traffic_mb" value_type="0">
           <description>MongoDB: Network Activity: Network Sum Outbound Traffic (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2104,7 +2104,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="15" key="network_outbound_traffic_mbit_per_second" value_type="0">
+        <item type="15" key="mongodb.network.outbound.traffic_mbit_per_second" value_type="0">
           <description>MongoDB: Network Activity: Average Outboud Traffic</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2133,13 +2133,13 @@
           <snmpv3_authpassphrase></snmpv3_authpassphrase>
           <snmpv3_privpassphrase></snmpv3_privpassphrase>
           <params>
-            <formula>((last("network_outbound_traffic_mb",#1) - last("network_outbound_traffic_mb",#2)) * 8) / 60</formula>
+            <formula>((last("mongodb.network.outbound.traffic_mb",#1) - last("mongodb.network.outbound.traffic_mb",#2)) * 8) / 60</formula>
           </params>
           <applications>
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="network_requests" value_type="3">
+        <item type="2" key="mongodb.network.requests" value_type="3">
           <description>MongoDB: Network Activity: Network Requests</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2172,7 +2172,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="write_backs_queued" value_type="1">
+        <item type="2" key="mongodb.write_backs_queued" value_type="1">
           <description>MongoDB: Performance: Is there any writeback operations queued</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2205,7 +2205,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="opcounters_command" value_type="3">
+        <item type="2" key="mongodb.opcounters.command" value_type="3">
           <description>MongoDB: OpCounters: Total Commands in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2238,7 +2238,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="opcounters_delete" value_type="3">
+        <item type="2" key="mongodb.opcounters.delete" value_type="3">
           <description>MongoDB: OpCounters: Total Delete Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2271,7 +2271,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="opcounters_getmore" value_type="3">
+        <item type="2" key="mongodb.opcounters.getmore" value_type="3">
           <description>MongoDB: OpCounters: Total Getmore Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2304,7 +2304,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="opcounters_insert" value_type="3">
+        <item type="2" key="mongodb.opcounters.insert" value_type="3">
           <description>MongoDB: OpCounters: Total Insert Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2337,7 +2337,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="opcounters_query" value_type="3">
+        <item type="2" key="mongodb.opcounters.query" value_type="3">
           <description>MongoDB: OpCounters: Total Query Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2370,7 +2370,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="opcounters_update" value_type="3">
+        <item type="2" key="mongodb.opcounters.update" value_type="3">
           <description>MongoDB: OpCounters: Total Update Ops in Last 1 Minute</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2403,7 +2403,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="oplog.rs_count" value_type="3">
+        <item type="2" key="mongodb.oplog.rs_count" value_type="3">
           <description>MongoDB: Replication: Entries in oplog.rs Collection</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2436,7 +2436,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="repl_member_attention_state_count" value_type="3">
+        <item type="2" key="mongodb.repl_member_attention_state_count" value_type="3">
           <description>MongoDB: Replication: Count of ReplicaSet Members Needing Attention</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2469,7 +2469,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="repl_member_attention_state_info" value_type="4">
+        <item type="2" key="mongodb.repl_member_attention_state_info" value_type="4">
           <description>MongoDB: Replication: List of ReplicaSet Members in Attention State</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2502,7 +2502,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="replica_set_hosts" value_type="4">
+        <item type="2" key="mongodb.replica_set_hosts" value_type="4">
           <description>MongoDB: Replication: ReplicaSet Host Names</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2578,7 +2578,7 @@
             <valuemap/>
             <logtimefmt/>
         </item>
-        <item type="2" key="replica_set_member_count" value_type="3">
+        <item type="2" key="mongodb.replica_set_member_count" value_type="3">
           <description>MongoDB: Replication: ReplicaSet Member Count</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2611,7 +2611,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="replica_set_name" value_type="1">
+        <item type="2" key="mongodb.replica_set_name" value_type="1">
           <description>MongoDB: Replication: ReplicaSet Name</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2644,7 +2644,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="shard_chunk_count" value_type="3">
+        <item type="2" key="mongodb.shard_chunk_count" value_type="3">
           <description>MongoDB: Sharding: Total Number of Chunks</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2677,7 +2677,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="shard_count" value_type="3">
+        <item type="2" key="mongodb.shard_count" value_type="3">
           <description>MongoDB: Sharding: Total Number of Shards</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2710,7 +2710,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="shard_info" value_type="4">
+        <item type="2" key="mongodb.shard_info" value_type="4">
           <description>MongoDB: Sharding: List of Shards in Cluster</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2743,7 +2743,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="sharded_collection_info" value_type="4">
+        <item type="2" key="mongodb.sharded_collection_info" value_type="4">
           <description>MongoDB: Sharding: List of Sharded Collections in Cluster</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2776,7 +2776,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="sharded_collections_count" value_type="3">
+        <item type="2" key="mongodb.sharded_collections_count" value_type="3">
           <description>MongoDB: Sharding: Total Number of Sharded Collections</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2809,7 +2809,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="total_collection_count" value_type="3">
+        <item type="2" key="mongodb.total.collection.count" value_type="3">
           <description>MongoDB: Databases and Collections: Total Collections Across All Databases</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2842,7 +2842,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="total_index_count" value_type="3">
+        <item type="2" key="mongodb.total.index.count" value_type="3">
           <description>MongoDB: Databases and Collections: Total Indexes Across All Collections</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2875,7 +2875,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-         <item type="2" key="total_index_size" value_type="0">
+         <item type="2" key="mongodb.total.index.size" value_type="0">
           <description>MongoDB: Databases and Collections: Total Index Size Across All Collections (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2908,7 +2908,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="total_object_count" value_type="3">
+        <item type="2" key="mongodb.total.object.count" value_type="3">
           <description>MongoDB: Databases and Collections: Total Objects Across All Databases</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2941,7 +2941,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="totalSize" value_type="0">
+        <item type="2" key="mondodb.total.size" value_type="0">
           <description>MongoDB: Databases and Collections: Total Size of All Databases (MB)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -2974,7 +2974,7 @@
             <application>MongoDB</application>
           </applications>
         </item>
-        <item type="2" key="uptime" value_type="3">
+        <item type="2" key="mongodb.uptime" value_type="3">
           <description>MongoDB: Miscellaneous: MongoDB Uptime (seconds)</description>
           <ipmi_sensor></ipmi_sensor>
           <delay>60</delay>
@@ -3025,7 +3025,7 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_MongoDB:indexCounters_btree_hits">
+            <graph_element item="Template_MongoDB:mongodb.indexCounters.btree.hits">
               <drawtype>2</drawtype>
               <sortorder>0</sortorder>
               <color>00CC00</color>
@@ -3033,7 +3033,7 @@
               <calc_fnc>2</calc_fnc>
               <type>0</type>
             </graph_element>
-             <graph_element item="Template_MongoDB:indexCounters_btree_misses">
+             <graph_element item="Template_MongoDB:mongodb.indexCounters.btree.misses">
               <drawtype>2</drawtype>
               <sortorder>1</sortorder>
               <color>CC0000</color>
@@ -3058,7 +3058,7 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_MongoDB:globalLock_currentQueue_readers">
+            <graph_element item="Template_MongoDB:mongodb.globalLock.currentQueue.readers">
               <drawtype>2</drawtype>
               <sortorder>0</sortorder>
               <color>00CC00</color>
@@ -3066,7 +3066,7 @@
               <calc_fnc>2</calc_fnc>
               <type>0</type>
             </graph_element>
-             <graph_element item="Template_MongoDB:globalLock_currentQueue_writers">
+             <graph_element item="Template_MongoDB:mongodb.globalLock.currentQueue.writers">
               <drawtype>2</drawtype>
               <sortorder>1</sortorder>
               <color>CC0000</color>
@@ -3091,7 +3091,7 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_MongoDB:network_outbound_traffic_mbit_per_second">
+            <graph_element item="Template_MongoDB:mongodb.network.outbound.traffic_mbit_per_second">
               <drawtype>2</drawtype>
               <sortorder>0</sortorder>
               <color>00CC00</color>
@@ -3099,7 +3099,7 @@
               <calc_fnc>2</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:network_inbound_traffic_mbit_per_second">
+            <graph_element item="Template_MongoDB:mongodb.network.inbound.traffic_mbit_per_second">
               <drawtype>2</drawtype>
               <sortorder>1</sortorder>
               <color>CC0000</color>
@@ -3124,7 +3124,7 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_MongoDB:mem_virtual">
+            <graph_element item="Template_MongoDB:mongodb.mem.virtual">
               <drawtype>2</drawtype>
               <sortorder>0</sortorder>
               <color>009900</color>
@@ -3132,7 +3132,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:extra_info_heap_usage">
+            <graph_element item="Template_MongoDB:mongodb.extra_info.heap_usage">
               <drawtype>2</drawtype>
               <sortorder>1</sortorder>
               <color>000000</color>
@@ -3140,7 +3140,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:mem_resident">
+            <graph_element item="Template_MongoDB:mongodb.mem.resident">
               <drawtype>2</drawtype>
               <sortorder>2</sortorder>
               <color>0000CC</color>
@@ -3165,7 +3165,7 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_MongoDB:backgroundFlushing_average_ms">
+            <graph_element item="Template_MongoDB:mongodb.backgroundFlushing.average_ms">
               <drawtype>2</drawtype>
               <sortorder>0</sortorder>
               <color>000080</color>
@@ -3173,7 +3173,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:backgroundFlushing_last_ms">
+            <graph_element item="Template_MongoDB:mongodb.backgroundFlushing.last_ms">
               <drawtype>2</drawtype>
               <sortorder>1</sortorder>
               <color>808000</color>
@@ -3181,7 +3181,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:backgroundFlushing_total_ms">
+            <graph_element item="Template_MongoDB:mongodb.backgroundFlushing.total_ms">
               <drawtype>2</drawtype>
               <sortorder>2</sortorder>
               <color>00DD00</color>
@@ -3206,7 +3206,7 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_MongoDB:opcounters_query">
+            <graph_element item="Template_MongoDB:mongodb.opcounters.query">
               <drawtype>2</drawtype>
               <sortorder>0</sortorder>
               <color>00DD00</color>
@@ -3214,7 +3214,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:opcounters_insert">
+            <graph_element item="Template_MongoDB:mongodb.opcounters.insert">
               <drawtype>2</drawtype>
               <sortorder>1</sortorder>
               <color>CC0000</color>
@@ -3222,7 +3222,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:opcounters_update">
+            <graph_element item="Template_MongoDB:mongodb.opcounters.update">
               <drawtype>2</drawtype>
               <sortorder>2</sortorder>
               <color>CCCC00</color>
@@ -3230,7 +3230,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:opcounters_delete">
+            <graph_element item="Template_MongoDB:mongodb.opcounters.delete">
               <drawtype>2</drawtype>
               <sortorder>3</sortorder>
               <color>0000BB</color>
@@ -3238,7 +3238,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:opcounters_command">
+            <graph_element item="Template_MongoDB:mongodb.opcounters.command">
               <drawtype>2</drawtype>
               <sortorder>4</sortorder>
               <color>000000</color>
@@ -3246,7 +3246,7 @@
               <calc_fnc>7</calc_fnc>
               <type>0</type>
             </graph_element>
-            <graph_element item="Template_MongoDB:opcounters_getmore">
+            <graph_element item="Template_MongoDB:mongodb.opcounters.getmore">
               <drawtype>2</drawtype>
               <sortorder>5</sortorder>
               <color>EE00EE</color>
@@ -3271,7 +3271,7 @@
           <percent_left>0.0000</percent_left>
           <percent_right>0.0000</percent_right>
           <graph_elements>
-            <graph_element item="Template_MongoDB:totalSize">
+            <graph_element item="Template_MongoDB:mondodb.total.size">
               <drawtype>1</drawtype>
               <sortorder>0</sortorder>
               <color>0000EE</color>
