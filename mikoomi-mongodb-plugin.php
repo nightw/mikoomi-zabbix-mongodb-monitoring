@@ -193,6 +193,11 @@ if ($server_status['globalLock']['lockTime'] != null) {
   write_to_data_file($zabbix_name, "globalLock_lockTime", $globalLock_lockTime) ;
 }
 
+if ($server_status['globalLock']['totalTime'] != null) {
+  $globalLock_totalTime = $server_status['globalLock']['totalTime'] ;
+  write_to_data_file($zabbix_name, "globalLock_totalTime", $globalLock_totalTime) ;
+}
+
 $globalLock_currentQueue_total = $server_status['globalLock']['currentQueue']['total'] ;
 write_to_data_file($zabbix_name, "globalLock_currentQueue_total", $globalLock_currentQueue_total) ;
 
