@@ -188,8 +188,10 @@ write_to_data_file($zabbix_name, "mongodb_version", $mongo_version) ;
 $uptime = $server_status['uptime'] ;
 write_to_data_file($zabbix_name, "uptime", $uptime) ;
 
-$globalLock_lockTime = $server_status['globalLock']['lockTime'] ;
-write_to_data_file($zabbix_name, "globalLock_lockTime", $globalLock_lockTime) ;
+if ($server_status['globalLock']['lockTime'] != null) {
+  $globalLock_lockTime = $server_status['globalLock']['lockTime'] ;
+  write_to_data_file($zabbix_name, "globalLock_lockTime", $globalLock_lockTime) ;
+}
 
 $globalLock_currentQueue_total = $server_status['globalLock']['currentQueue']['total'] ;
 write_to_data_file($zabbix_name, "globalLock_currentQueue_total", $globalLock_currentQueue_total) ;
