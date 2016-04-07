@@ -8,7 +8,7 @@ The *MongoDB Plugin* can be used to monitor standalone, replicated as well as cl
 Important notes on Zabbix versions
 ==================================
 
-* If you're running older versions of Zabbix Server (below 3.0, e.g. 2.4), then you should use the filex suffixed with `-24` (`MongoDB_Plugin_template_export-24.xml`, `mikoomi-mongodb-plugin-24.php` and mikoomi-mongodb-plugin-24.sh) at any place where this README tells you about the version without the suffix.
+* If you're running older versions of Zabbix Server (below 3.0, e.g. 2.4), then you should use the files suffixed with `-24` (`MongoDB_Plugin_template_export-24.xml`, `mikoomi-mongodb-plugin-24.php` and `mikoomi-mongodb-plugin-24.sh`) at any place where this README tells you about the version without the suffix.
 * If you're running a current version of Zabbix Server (3.0 and above) then you should just use the normal files and the documentation below in this README
 
 Setup and Configuration
@@ -27,7 +27,9 @@ Now install the php MongoDB driver using the instructions at [http://us2.php.net
 
 Also you need the mongo PECL package for PHP which can be installed either by the package manager of your distribution or with this PECL command:
 
-* pecl install mongo
+```
+pecl install mongo
+```
 
 If you installed MongoDB driver via the PECL command, then you need to enable it for PHP. Edit the PHP configration of the server (e.g.: `/etc/php5/cli/php.ini`) and make sure the following line is present in it:
 
