@@ -3,42 +3,37 @@
 Overview
 ========
 
-The *MongoDB Plugin* can be used to monitor standalone, replicated as well as clustered MongoDB instances. The plugin monitors availability, resource utilization, health, performance and other important metrics of a MongoDB environment. Coupled with the Zabbix OS level monitoring, the MongoDB plugin provides great peace of mind knowing that MongoDB is being monitored 24x7 and sufficient data would be available for sizing, scalability, troubleshooting and support.
+The *MongoDB Plugin* can be used to monitor standalone, replicated as well as clustered MongoDB instances with Zabbix. The plugin monitors availability, resource utilization, health, performance and other important metrics of a MongoDB environment. Coupled with the Zabbix OS level monitoring, the MongoDB plugin provides great peace of mind knowing that MongoDB is being monitored 24x7 and sufficient data would be available for sizing, scalability, troubleshooting and support.
 
+Important notes on Zabbix versions
+==================================
+
+* If you're running older versions of Zabbix Server (below 3.0, e.g. 2.4), then you should use the filex suffixed with `-24` (`MongoDB_Plugin_template_export-24.xml`, `mikoomi-mongodb-plugin-24.php` and mikoomi-mongodb-plugin-24.sh) at any place where this README tells you about the version without the suffix.
+* If you're running a current version of Zabbix Server (3.0 and above) then you should just use the normal files and the documentation below in this README
 
 Setup and Configuration
 =======================
 
-The MongoDB plugin uses the MongoDB PHP driver which needs to be installed on the Zabbix server.  For this, install and setup the following packages:
+The MongoDB plugin uses the MongoDB PHP driver which needs to be installed on the MongoDB node being monitored. For this, install and setup the following packages:
 
 * **php5-dev (or php5-devel)** = Files for PHP5 module development
 * **php5-pear** = PEAR - PHP Extension and Application Repository
 * **gcc** = GNU C Compiler
 * **make** = make utility
 
-To install the above on a Zabbix appliance, login into the appliance as root (default password = zabbix) and run the following commands:
-
-* yast -i php5-devel
-* yast -i gcc
-* yast -i php5-pear
-* yast -i make
+For the above use the right package manager for your distribution (aptitude, yum, etc.)
 
 Now install the php MongoDB driver using the instructions at [http://us2.php.net/manual/en/mongo.installation.php](http://us2.php.net/manual/en/mongo.installation.php)
 
-In the case of the Zabbix appliance, run the the following pecl command:
+Also you need the mongo PECL package for PHP which can be installed either by the package manager of your distribution or with this PECL command:
 
 * pecl install mongo
 
-After successful installation of the MongoDB driver, you need to "enable" it within php5. Edit the two files **/etc/php5/cli/php.ini and /etc/php5/apache2/php.ini** and add a line to the "Dynamic Extensions" sections as shown below.
+If you installed MongoDB driver via the PECL command, then you need to enable it for PHP. Edit the PHP configration of the server (e.g.: `/etc/php5/cli/php.ini`) and make sure the following line is present in it:
 
 ```
-;;;;;;;;;;;;;;;;;;;;;;
-; Dynamic Extensions ;
-;;;;;;;;;;;;;;;;;;;;;;
-
 extension=mongo.so
 ```
-
 
 Ensure that the php MongoDB driver is setup and configured properly by testing out one of the sample php programs for MongoDB driver ([http://us2.php.net/manual/en/mongo.tutorial.php](http://us2.php.net/manual/en/mongo.tutorial.php)).
 
@@ -54,17 +49,13 @@ Navigate as follows:
 * In the "Import file" dialog box, browse/search/enter the filename of the Zabbix template that was downloaded
 * Upload the template
 
-***Now you are ready to start monitoring your MongoDB servers !***
-
-
-
 Monitoring a MongoDB Environment (single server, replicaset or cluster)
 =======================================================================
  
 Follow these steps to start monitoring a MongoDB server
 
 * Setting up Zabbix server's side
-  * Make sure the host running the MongoDB is added to Zabbix Hosts previously (see host addition [here](https://www.zabbix.com/documentation/2.2/manual/quickstart/host))
+  * Make sure the host running the MongoDB is added to Zabbix Hosts previously (see host addition [here](https://www.zabbix.com/documentation/3.0/manual/quickstart/host))
   * Login to the Zabbix front-end and navigate to **_Configuration >> Hosts_**
   * Click on host which is running the MongoDB button on the left
   * Click on **Templates** in the top menu bar
@@ -85,8 +76,7 @@ ZABBIX_HOSTNAME=$(hostname -f)
 
 Now data should be collected by the template at intervals of 60 seconds.
 
-If something is wrong (data does not show up in the Zabbix server, etc.) then you should look at the output at /tmp/mikoomi-mongodb-plugin.php_*.log file)
-
+If something is wrong (data does not show up in the Zabbix server, etc.) then you should run the script with the `-D` option for debug mode and then look at the output at /tmp/mikoomi-mongodb-plugin.php_*.log file.
 
 Monitored Metrics
 =================
