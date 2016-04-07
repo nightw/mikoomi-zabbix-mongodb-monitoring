@@ -103,7 +103,7 @@ function write_to_data_lines($zabbix_name, $key, $value)
     // Only if we have a value do we want to record this metric
     if(isset($value) && $value !== '')
     {
-        $data_line = sprintf("\"%s\" \"%s\" \"%s\"", $zabbix_name, $key, $value) ;
+        $data_line = sprintf("\"%s\" \"mongodb.%s\" \"%s\"", $zabbix_name, $key, $value) ;
         $data_lines[] = $data_line ;
     }
 }
@@ -155,148 +155,148 @@ if (!isset($server_status['ok'])) {
 }
 
 $mongo_version = $server_status['version'] ;
-write_to_data_lines($zabbix_name, "mongodb_version", $mongo_version) ;
+write_to_data_lines($zabbix_name, "version", $mongo_version) ;
 
 $uptime = $server_status['uptime'] ;
 write_to_data_lines($zabbix_name, "uptime", $uptime) ;
 
 if ($server_status['globalLock']['lockTime'] != null) {
   $globalLock_lockTime = $server_status['globalLock']['lockTime'] ;
-  write_to_data_lines($zabbix_name, "globalLock_lockTime", $globalLock_lockTime) ;
+  write_to_data_lines($zabbix_name, "globalLock.lockTime", $globalLock_lockTime) ;
 }
 
 if ($server_status['globalLock']['totalTime'] != null) {
   $globalLock_totalTime = $server_status['globalLock']['totalTime'] ;
-  write_to_data_lines($zabbix_name, "globalLock_totalTime", $globalLock_totalTime) ;
+  write_to_data_lines($zabbix_name, "globalLock.totalTime", $globalLock_totalTime) ;
 }
 
 $globalLock_currentQueue_total = $server_status['globalLock']['currentQueue']['total'] ;
-write_to_data_lines($zabbix_name, "globalLock_currentQueue_total", $globalLock_currentQueue_total) ;
+write_to_data_lines($zabbix_name, "globalLock.currentQueue.total", $globalLock_currentQueue_total) ;
 
 $globalLock_currentQueue_readers = $server_status['globalLock']['currentQueue']['readers'] ;
-write_to_data_lines($zabbix_name, "globalLock_currentQueue_readers", $globalLock_currentQueue_readers) ;
+write_to_data_lines($zabbix_name, "globalLock.currentQueue.readers", $globalLock_currentQueue_readers) ;
 
 $globalLock_currentQueue_writers = $server_status['globalLock']['currentQueue']['writers'] ;
-write_to_data_lines($zabbix_name, "globalLock_currentQueue_writers", $globalLock_currentQueue_writers) ;
+write_to_data_lines($zabbix_name, "globalLock.currentQueue.writers", $globalLock_currentQueue_writers) ;
 
 $mem_bits = $server_status['mem']['bits'] ;
-write_to_data_lines($zabbix_name, "mem_bits", $mem_bits) ;
+write_to_data_lines($zabbix_name, "mem.bits", $mem_bits) ;
 
 $mem_resident = $server_status['mem']['resident'] ;
-write_to_data_lines($zabbix_name, "mem_resident", $mem_resident) ;
+write_to_data_lines($zabbix_name, "mem.resident", $mem_resident) ;
 
 $mem_virtual = $server_status['mem']['virtual'] ;
-write_to_data_lines($zabbix_name, "mem_virtual", $mem_virtual) ;
+write_to_data_lines($zabbix_name, "mem.virtual", $mem_virtual) ;
 
 $connections_current = $server_status['connections']['current'] ;
-write_to_data_lines($zabbix_name, "connections_current", $connections_current) ;
+write_to_data_lines($zabbix_name, "connections.current", $connections_current) ;
 
 $connections_available = $server_status['connections']['available'] ;
-write_to_data_lines($zabbix_name, "connections_available", $connections_available) ;
+write_to_data_lines($zabbix_name, "connections.available", $connections_available) ;
 
 $extra_info_heap_usage = round(($server_status['extra_info']['heap_usage_bytes'])/(1024*124), 2) ;
-write_to_data_lines($zabbix_name, "extra_info_heap_usage", $extra_info_heap_usage) ;
+write_to_data_lines($zabbix_name, "extra_info.heap_usage", $extra_info_heap_usage) ;
 
 $extra_info_page_faults = $server_status['extra_info']['page_faults'];
-write_to_data_lines($zabbix_name, "extra_info_page_faults", $extra_info_page_faults) ;
+write_to_data_lines($zabbix_name, "extra_info.page_faults", $extra_info_page_faults) ;
 
 if ($server_status['indexCounters']['btree']['accesses'] != null) {
   $indexCounters_btree_accesses = $server_status['indexCounters']['btree']['accesses'] ;
 } else {
   $indexCounters_btree_accesses = $server_status['indexCounters']['accesses'] ;
 }
-write_to_data_lines($zabbix_name, "indexCounters_btree_accesses", $indexCounters_btree_accesses) ;
+write_to_data_lines($zabbix_name, "indexCounters.btree.accesses", $indexCounters_btree_accesses) ;
 
 if ($server_status['indexCounters']['btree']['hits'] != null) {
   $indexCounters_btree_hits = $server_status['indexCounters']['btree']['hits'] ;
 } else {
   $indexCounters_btree_hits = $server_status['indexCounters']['hits'] ;
 }
-write_to_data_lines($zabbix_name, "indexCounters_btree_hits", $indexCounters_btree_hits) ;
+write_to_data_lines($zabbix_name, "indexCounters.btree.hits", $indexCounters_btree_hits) ;
 
 if ($server_status['indexCounters']['btree']['misses'] != null) {
   $indexCounters_btree_misses = $server_status['indexCounters']['btree']['misses'] ;
 } else {
   $indexCounters_btree_misses = $server_status['indexCounters']['misses'] ;
 }
-write_to_data_lines($zabbix_name, "indexCounters_btree_misses", $indexCounters_btree_misses) ;
+write_to_data_lines($zabbix_name, "indexCounters.btree.misses", $indexCounters_btree_misses) ;
 
 if ($server_status['indexCounters']['btree']['resets'] != null) {
   $indexCounters_btree_resets = $server_status['indexCounters']['btree']['resets'] ;
 } else {
   $indexCounters_btree_resets = $server_status['indexCounters']['resets'] ;
 }
-write_to_data_lines($zabbix_name, "indexCounters_btree_resets", $indexCounters_btree_resets) ;
+write_to_data_lines($zabbix_name, "indexCounters.btree.resets", $indexCounters_btree_resets) ;
 
 if ($server_status['indexCounters']['btree']['missRatio'] != null) {
   $indexCounters_btree_missRatio = $server_status['indexCounters']['btree']['missRatio'] ;
 } else {
   $indexCounters_btree_missRatio = $server_status['indexCounters']['missRatio'] ;
 }
-write_to_data_lines($zabbix_name, "indexCounters_btree_missRatio", $indexCounters_btree_missRatio) ;
+write_to_data_lines($zabbix_name, "indexCounters.btree.missRatio", $indexCounters_btree_missRatio) ;
 
 $backgroundFlushing_flushes = $server_status['backgroundFlushing']['flushes'] ;
-write_to_data_lines($zabbix_name, "backgroundFlushing_flushes", $backgroundFlushing_flushes) ;
+write_to_data_lines($zabbix_name, "backgroundFlushing.flushes", $backgroundFlushing_flushes) ;
 
 $backgroundFlushing_total_ms = $server_status['backgroundFlushing']['total_ms'] ;
-write_to_data_lines($zabbix_name, "backgroundFlushing_total_ms", $backgroundFlushing_total_ms) ;
+write_to_data_lines($zabbix_name, "backgroundFlushing.total_ms", $backgroundFlushing_total_ms) ;
 
 $backgroundFlushing_average_ms = $server_status['backgroundFlushing']['average_ms'] ;
-write_to_data_lines($zabbix_name, "backgroundFlushing_average_ms", $backgroundFlushing_average_ms) ;
+write_to_data_lines($zabbix_name, "backgroundFlushing.average_ms", $backgroundFlushing_average_ms) ;
 
 $backgroundFlushing_last_ms = $server_status['backgroundFlushing']['last_ms'] ;
-write_to_data_lines($zabbix_name, "backgroundFlushing_last_ms", $backgroundFlushing_last_ms) ;
+write_to_data_lines($zabbix_name, "backgroundFlushing.last_ms", $backgroundFlushing_last_ms) ;
 
 $cursors_totalOpen = $server_status['cursors']['totalOpen'] ;
-write_to_data_lines($zabbix_name, "cursors_totalOpen", $cursors_totalOpen) ;
+write_to_data_lines($zabbix_name, "cursors.totalOpen", $cursors_totalOpen) ;
 
 $cursors_clientCursors_size = $server_status['cursors']['clientCursors_size'] ;
-write_to_data_lines($zabbix_name, "cursors_clientCursors_size", $cursors_clientCursors_size) ;
+write_to_data_lines($zabbix_name, "cursors.clientCursors_size", $cursors_clientCursors_size) ;
 
 $cursors_timedOut = $server_status['cursors']['timedOut'] ;
-write_to_data_lines($zabbix_name, "cursors_timedOut", $cursors_timedOut) ;
+write_to_data_lines($zabbix_name, "cursors.timedOut", $cursors_timedOut) ;
 
 $opcounters_insert = $server_status['opcounters']['insert'] ;
-write_to_data_lines($zabbix_name, "opcounters_insert", $opcounters_insert) ;
+write_to_data_lines($zabbix_name, "opcounters.insert", $opcounters_insert) ;
 
 $opcounters_query = $server_status['opcounters']['query'] ;
-write_to_data_lines($zabbix_name, "opcounters_query", $opcounters_query) ;
+write_to_data_lines($zabbix_name, "opcounters.query", $opcounters_query) ;
 
 $opcounters_update = $server_status['opcounters']['update'] ;
-write_to_data_lines($zabbix_name, "opcounters_update", $opcounters_update) ;
+write_to_data_lines($zabbix_name, "opcounters.update", $opcounters_update) ;
 
 $opcounters_delete = $server_status['opcounters']['delete'] ;
-write_to_data_lines($zabbix_name, "opcounters_delete", $opcounters_delete) ;
+write_to_data_lines($zabbix_name, "opcounters.delete", $opcounters_delete) ;
 
 $opcounters_getmore = $server_status['opcounters']['getmore'] ;
-write_to_data_lines($zabbix_name, "opcounters_getmore", $opcounters_getmore) ;
+write_to_data_lines($zabbix_name, "opcounters.getmore", $opcounters_getmore) ;
 
 $opcounters_command = $server_status['opcounters']['command'] ;
-write_to_data_lines($zabbix_name, "opcounters_command", $opcounters_command) ;
+write_to_data_lines($zabbix_name, "opcounters.command", $opcounters_command) ;
 
 $asserts_regular = $server_status['asserts']['regular'] ;
-write_to_data_lines($zabbix_name, "asserts_regular", $asserts_regular) ;
+write_to_data_lines($zabbix_name, "asserts.regular", $asserts_regular) ;
 
 $asserts_warning = $server_status['asserts']['warning'] ;
-write_to_data_lines($zabbix_name, "asserts_warning", $asserts_warning) ;
+write_to_data_lines($zabbix_name, "asserts.warning", $asserts_warning) ;
 
 $asserts_msg = $server_status['asserts']['msg'] ;
-write_to_data_lines($zabbix_name, "asserts_msg", $asserts_msg) ;
+write_to_data_lines($zabbix_name, "asserts.msg", $asserts_msg) ;
 
 $asserts_user = $server_status['asserts']['user'] ;
-write_to_data_lines($zabbix_name, "asserts_user", $asserts_user) ;
+write_to_data_lines($zabbix_name, "asserts.user", $asserts_user) ;
 
 $asserts_rollovers = $server_status['asserts']['rollovers'] ;
-write_to_data_lines($zabbix_name, "asserts_rollovers", $asserts_rollovers) ;
+write_to_data_lines($zabbix_name, "asserts.rollovers", $asserts_rollovers) ;
 
 $network_inbound_traffic_mb = ($server_status['network']['bytesIn'])/(1024*1024) ;
-write_to_data_lines($zabbix_name, "network_inbound_traffic_mb", $network_inbound_traffic_mb) ;
+write_to_data_lines($zabbix_name, "network.inbound.traffic_mb", $network_inbound_traffic_mb) ;
 
 $network_outbound_traffic_mb = ($server_status['network']['bytesOut'])/(1024*1024) ;
-write_to_data_lines($zabbix_name, "network_outbound_traffic_mb", $network_outbound_traffic_mb) ;
+write_to_data_lines($zabbix_name, "network.outbound.traffic_mb", $network_outbound_traffic_mb) ;
 
 $network_requests = $server_status['network']['numRequests'] ;
-write_to_data_lines($zabbix_name, "network_requests", $network_requests) ;
+write_to_data_lines($zabbix_name, "network.requests", $network_requests) ;
 
 $write_backs_queued = $server_status['writeBacksQueued'] ;
 if ($write_backs_queued) {
@@ -306,28 +306,28 @@ if ($write_backs_queued) {
 }
 
 $logging_commits = $server_status['dur']['commits'] ;
-write_to_data_lines($zabbix_name, "logging_commits", $logging_commits) ;
+write_to_data_lines($zabbix_name, "logging.commits", $logging_commits) ;
 
 $logging_journal_writes_mb = $server_status['dur']['journaledMB'] ;
-write_to_data_lines($zabbix_name, "logging_journal_writes_mb", $logging_journal_writes_mb) ;
+write_to_data_lines($zabbix_name, "logging.journal_writes_mb", $logging_journal_writes_mb) ;
 
 $logging_datafile_writes_mb = $server_status['dur']['writeToDataFilesMB'] ;
-write_to_data_lines($zabbix_name, "logging_datafile_writes_mb", $logging_datafile_writes_mb) ;
+write_to_data_lines($zabbix_name, "logging.datafile_writes_mb", $logging_datafile_writes_mb) ;
 
 $logging_commits_in_writelock = $server_status['dur']['commitsInWriteLock'] ;
-write_to_data_lines($zabbix_name, "logging_commits_in_writelock", $logging_commits_in_writelock) ;
+write_to_data_lines($zabbix_name, "logging.commits_in_writelock", $logging_commits_in_writelock) ;
 
 $logging_early_commits = $server_status['dur']['earlyCommits'] ;
-write_to_data_lines($zabbix_name, "logging_early_commits", $logging_early_commits) ;
+write_to_data_lines($zabbix_name, "logging.early_commits", $logging_early_commits) ;
 
 $logging_log_buffer_prep_time_ms = $server_status['dur']['timeMs']['prepLogBuffer'] ;
-write_to_data_lines($zabbix_name, "logging_log_buffer_prep_time_ms", $logging_log_buffer_prep_time_ms) ;
+write_to_data_lines($zabbix_name, "logging.log_buffer_prep_time_ms", $logging_log_buffer_prep_time_ms) ;
 
 $logging_journal_write_time_ms = $server_status['dur']['timeMs']['writeToJournal'] ;
-write_to_data_lines($zabbix_name, "logging_journal_write_time_ms", $logging_journal_write_time_ms) ;
+write_to_data_lines($zabbix_name, "logging.journal_write_time_ms", $logging_journal_write_time_ms) ;
 
 $logging_datafile_write_time_ms = $server_status['dur']['timeMs']['writeToDataFiles'] ;
-write_to_data_lines($zabbix_name, "logging_datafile_write_time_ms", $logging_datafile_write_time_ms) ;
+write_to_data_lines($zabbix_name, "logging.datafile_write_time_ms", $logging_datafile_write_time_ms) ;
 
 //-----------------------------
 // Get DB list and cumulative DB info
@@ -335,10 +335,10 @@ write_to_data_lines($zabbix_name, "logging_datafile_write_time_ms", $logging_dat
 $db_list = $mongo_connection->listDBs() ;
 
 $db_count = count($db_list) ;
-write_to_data_lines($zabbix_name, "db_count", $db_count) ;
+write_to_data_lines($zabbix_name, "db.count", $db_count) ;
 
 $totalSize = round(($db_list['totalSize'])/(1024*1024), 2) ;
-write_to_data_lines($zabbix_name, "totalSize", $totalSize) ;
+write_to_data_lines($zabbix_name, "total.size", $totalSize) ;
 
 $sharded_db_count = 0 ;
 $total_collection_count = 0 ;
@@ -348,16 +348,16 @@ $total_index_size = 0.0 ;
 
 $is_sharded = 'No' ;
 
-$db_info_array = '' ;
-$db_info_collections = '' ;
-$db_info_objects = '' ;
-$db_info_indexes = '' ;
-$db_info_avgObjSize = '' ;
-$db_info_dataSize = '' ;
-$db_info_indexSize = '' ;
-$db_info_storageSize = '' ;
-$db_info_numExtents_array = '' ;
-$db_info_fileSize = '' ;
+$db_info_array = array() ;
+$db_info_collections = array() ;
+$db_info_objects = array() ;
+$db_info_indexes = array() ;
+$db_info_avgObjSize = array() ;
+$db_info_dataSize = array() ;
+$db_info_indexSize = array() ;
+$db_info_storageSize = array() ;
+$db_info_numExtents_array = array() ;
+$db_info_fileSize = array() ;
 
 
 foreach($db_list['databases'] as $db) {
@@ -383,54 +383,42 @@ foreach($db_list['databases'] as $db) {
     $total_index_count += $db_stats['indexes'] ;
     $total_index_size += $db_stats['indexSize'] ;
 
-    $db_info_array[$db['name']] .= ' collections=' . $db_stats['collections'] .
-                                  ', objects=' . $db_stats['objects'] .
-                                  ', indexes=' . $db_stats['indexes']  .
-                                  ', avgObjSize=' . $db_stats['avgObjSize']  .
-                                  ', dataSize=' . $db_stats['dataSize']  .
-                                  ', indexSize=' . $db_stats['indexSize']  .
-                                  ', storageSize=' . $db_stats['storageSize']  .
-                                  ', numExtents=' . $db_stats['numExtents']  .
-                                  ', fileSize=' . $db_stats['fileSize']  ;
-
-    $db_info_collections .= $db['name'] . '=' . $db_stats['collections'] . ' || ' ;
-    $db_info_objects .= $db['name'] . '=' . $db_stats['objects'] . ' || ' ;
-    $db_info_indexes .= $db['name'] . '=' . $db_stats['indexes'] . ' || ' ;
-    $db_info_avgObjSize .= $db['name'] . '=' . $db_stats['avgObjSize'] . ' || ';
-    $db_info_dataSize .= $db['name'] . '=' . $db_stats['dataSize'] . ' || ';
-    $db_info_indexSize .= $db['name'] . '=' . $db_stats['indexSize'] . ' || ';
-    $db_info_storageSize .= $db['name'] . '=' . $db_stats['storageSize'] . ' || ';
-    $db_info_numExtents_array .= $db['name'] . '=' . $db_stats['numExtents'] . ' || ';
-    $db_info_fileSize .= $db['name'] . '=' . $db_stats['fileSize'] . ' || ';
+    $db_info_array[] = array("{#DBNAME}" => $db['name']) ;
+    $db_info_collections[$db['name']] = $db_stats['collections'] ;
+    $db_info_objects[$db['name']] = $db_stats['objects'] ;
+    $db_info_indexes[$db['name']] = $db_stats['indexes'] ;
+    $db_info_avgObjSize[$db['name']] = $db_stats['avgObjSize'] ;
+    $db_info_dataSize[$db['name']] = $db_stats['dataSize'] ;
+    $db_info_indexSize[$db['name']] = $db_stats['indexSize'] ;
+    $db_info_storageSize[$db['name']] = $db_stats['storageSize'] ;
+    $db_info_numExtents_array[$db['name']] = $db_stats['numExtents'] ;
+    $db_info_fileSize[$db['name']] = $db_stats['fileSize'] ;
 }
 
-$db_info = '';
-foreach($db_info_array as $key=>$value) {
-   $db_info .= $key . ':' . $value . ' || ' ;
-}
-
-write_to_data_lines($zabbix_name, "database_info", $db_info) ;
+write_to_data_lines($zabbix_name, "db.discovery", str_replace("\"", "\\\"", json_encode(array("data" => $db_info_array)))) ;
 
 write_to_data_lines($zabbix_name, "is_sharded", $is_sharded) ;
 
-write_to_data_lines($zabbix_name, "total_collection_count", $total_collection_count) ;
+write_to_data_lines($zabbix_name, "total.collection.count", $total_collection_count) ;
 
-write_to_data_lines($zabbix_name, "total_object_count", $total_object_count) ;
+write_to_data_lines($zabbix_name, "total.object.count", $total_object_count) ;
 
-write_to_data_lines($zabbix_name, "total_index_count", $total_index_count) ;
+write_to_data_lines($zabbix_name, "total.index.count", $total_index_count) ;
 
 $total_index_size = round($total_index_size/(1024*1024), 2) ;
-write_to_data_lines($zabbix_name, "total_index_size", $total_index_size) ;
+write_to_data_lines($zabbix_name, "total.index.size", $total_index_size) ;
 
-write_to_data_lines($zabbix_name, "db_collections", $db_info_collections) ;
-write_to_data_lines($zabbix_name, "db_objects", $db_info_objects) ;
-write_to_data_lines($zabbix_name, "db_indexes", $db_info_indexes) ;
-write_to_data_lines($zabbix_name, "db_avgObjSize", $db_info_avgObjSize) ;
-write_to_data_lines($zabbix_name, "db_dataSize", $db_info_dataSize) ;
-write_to_data_lines($zabbix_name, "db_indexSize", $db_info_indexSize) ;
-write_to_data_lines($zabbix_name, "db_storageSize", $db_info_storageSize) ;
-write_to_data_lines($zabbix_name, "db_numExtents", $db_info_numExtents_array) ;
-write_to_data_lines($zabbix_name, "db_fileSize", $db_info_fileSize) ;
+foreach($db_info_collections as $name => $dummy) {
+    write_to_data_lines($zabbix_name, "db.collections[" . $name . "]", $db_info_collections[$name]) ;
+    write_to_data_lines($zabbix_name, "db.objects[" . $name . "]", $db_info_objects[$name]) ;
+    write_to_data_lines($zabbix_name, "db.indexes[" . $name . "]", $db_info_indexes[$name]) ;
+    write_to_data_lines($zabbix_name, "db.avgObjSize[" . $name . "]", $db_info_avgObjSize[$name]) ;
+    write_to_data_lines($zabbix_name, "db.dataSize[" . $name . "]", $db_info_dataSize[$name]) ;
+    write_to_data_lines($zabbix_name, "db.indexSize[" . $name . "]", $db_info_indexSize[$name]) ;
+    write_to_data_lines($zabbix_name, "db.storageSize[" . $name . "]", $db_info_storageSize[$name]) ;
+    write_to_data_lines($zabbix_name, "db.numExtents[" . $name . "]", $db_info_numExtents_array[$name]) ;
+    write_to_data_lines($zabbix_name, "db.fileSize[" . $name . "]", $db_info_fileSize[$name]) ;
+}
 
 
 //-----------------------------
@@ -589,10 +577,10 @@ if ($is_sharded == 'Yes') {
 // Get data collection end time (we will use this to compute the total data collection time)
 $end_time = time() ;
 $data_collection_time = $end_time - $start_time ;
-write_to_data_lines($zabbix_name, "mongoDB_plugin_data_collection_time", $data_collection_time) ;
+write_to_data_lines($zabbix_name, "plugin.data_collection_time", $data_collection_time) ;
 
-write_to_data_lines($zabbix_name, "mongoDB_plugin_version", $command_version) ;
-write_to_data_lines($zabbix_name, "mongoDB_plugin_checksum", $md5_checksum_string) ;
+write_to_data_lines($zabbix_name, "plugin.version", $command_version) ;
+write_to_data_lines($zabbix_name, "plugin.checksum", $md5_checksum_string) ;
 
 // For DEBUG
 if ($debug_mode) {
