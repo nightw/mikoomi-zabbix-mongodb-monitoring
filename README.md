@@ -8,8 +8,9 @@ The *MongoDB Plugin* can be used to monitor standalone, replicated as well as cl
 Important notes on Zabbix versions
 ==================================
 
-* If you're running older versions of Zabbix Server (below 3.0, e.g. 2.4), then you should use the files suffixed with `-24` (`MongoDB_Plugin_template_export-24.xml`, `mikoomi-mongodb-plugin-24.php` and `mikoomi-mongodb-plugin-24.sh`) at any place where this README tells you about the version without the suffix.
-* If you're running a current version of Zabbix Server (3.0 and above) then you should just use the normal files and the documentation below in this README
+* **Zabbix 3.0.x and up:** there is no official support for those versions unfortunately. A pull request is always welcome about that too. You may have some luck with the files suffixed with `-24` (`MongoDB_Plugin_template_export-24.xml`, `mikoomi-mongodb-plugin-24.php` and `mikoomi-mongodb-plugin-24.sh`), but it's not guaranteed.
+* **Zabbix 2.4.x:** you should use the files suffixed with `-24` (`MongoDB_Plugin_template_export-24.xml`, `mikoomi-mongodb-plugin-24.php` and `mikoomi-mongodb-plugin-24.sh`) at any place where this README tells you about the version without the suffix.
+* **Zabbix 2.2 and below:** You should just use the normal files and the documentation below in this README.
 
 Setup and Configuration
 =======================
