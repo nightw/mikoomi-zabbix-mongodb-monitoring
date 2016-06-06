@@ -1,4 +1,4 @@
-# MongoDB Zabbix monitorign plugin
+# MongoDB Zabbix monitoring plugin
 
 Overview
 ========
