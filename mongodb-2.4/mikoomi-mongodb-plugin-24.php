@@ -29,7 +29,7 @@ error_reporting(E_PARSE) ;
 
 $options = getopt("Dh:p:z:u:x:H:P:", array("ssl")) ;
 $command_name = basename($argv[0]) ;
-$command_version = "0.4" ;
+$command_version = "0.6" ;
 
 // Get data collection start time (we will use this to compute the total data collection time)
 $start_time = time() ;
