@@ -428,7 +428,7 @@ if ($is_sharded == 'No') {
    $mongo_db_handle = $mongo_connection->selectDB('admin') ;
    $rs_status = $mongo_db_handle->command(array('replSetGetStatus'=>1)) ;
 
-   if (!($rs_status)) {
+   if (!($rs_status['ok'])) {
        write_to_data_lines($zabbix_name, "is_replica_set",  "No") ;
    }
    else {
