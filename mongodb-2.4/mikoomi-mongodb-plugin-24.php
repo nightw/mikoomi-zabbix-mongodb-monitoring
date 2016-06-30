@@ -79,7 +79,7 @@ $data_lines = array() ;
 $md5_checksum_string = md5_file($argv[0]) ;
 
 if ($debug_mode) {
-    write_to_log_file("version $command_version") ;
+    write_to_log("version $command_version") ;
 }
 //-------------------------------------------------------------------------//
 
